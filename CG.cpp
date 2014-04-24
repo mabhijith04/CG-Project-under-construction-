@@ -58,8 +58,121 @@
     void text1(void)
      
     {
+    glClear(GL_COLOR_BUFFER_BIT);
+ 
+ glBegin(GL_LINES);
+ glColor3f(1,0,0);
+ 
+ glVertex2f(200,250);
+ glVertex2f(250,400);
+ 
+ glVertex2f(150,250);
+ glVertex2f(250,350);
+ 
+ glVertex2f(100,250);
+ glVertex2f(250,300);
+ 
+ glVertex2f(250,400);
+ glVertex2f(300,250);
+
+ glVertex2f(250,350);
+ glVertex2f(350,250);
+ 
+ glVertex2f(250,300);
+ glVertex2f(400,250);
+ 
+ glVertex2f(250,100);
+ glVertex2f(200,250);
+
+ glVertex2f(250,150);
+ glVertex2f(150,250);
+ 
+ glVertex2f(250,200);
+ glVertex2f(100,250);
+ 
+ glVertex2f(250,100);
+ glVertex2f(300,250);
+ 
+ glVertex2f(250,150);
+ glVertex2f(350,250);
+ 
+ glVertex2f(250,200);
+ glVertex2f(400,250);
+ 
+ glVertex2f(250,400);
+ glVertex2f(250,100);
+ 
+ glVertex2f(100,250);
+ glVertex2f(400,250);
+ 
+ 
+ glEnd();
+ 
+ glBegin(GL_TRIANGLES);
+ glColor3f(1,0,0);
+ //second quadrant
+ glVertex2f(250,400);
+ glVertex2f(250,350);
+ glVertex2f(225,325);
+ 
+ glVertex2f(225,325);
+ glVertex2f(425.0/2,575.0/2);
+ glVertex2f(175,275);
+ 
+ glVertex2f(175,275);
+ glVertex2f(150,250);
+ glVertex2f(100,250);
+ //end
+ //4th quadrant
+ glVertex2f(400,250);
+ glVertex2f(350,250);
+ glVertex2f(325,225);
+ 
+ glVertex2f(325,225);
+ glVertex2f(575.0/2,425.0/2);
+ glVertex2f(275,175);
+ 
+ glVertex2f(275,175);
+ glVertex2f(250,100);
+ glVertex2f(250,150);
+ glEnd();
+
+ glBegin(GL_QUADS);
+ glColor3f(1,0,0);
+ 
+ glVertex2f(425.0/2,575.0/2);
+ glVertex2f(250,300);
+ glVertex2f(250,250);
+ glVertex2f(200,250);
+ 
+ glVertex2f(250,350);
+ glVertex2f(250,300);
+ glVertex2f(575.0/2,575.0/2);
+ glVertex2f(275,325);
+ 
+ glVertex2f(575.0/2,575.0/2);
+ glVertex2f(300,250);
+ glVertex2f(350,250);
+ glVertex2f(325,275);
+ 
+ glVertex2f(250,250);
+ glVertex2f(250,200);
+ glVertex2f(575.0/2,425.0/2);
+ glVertex2f(300,250);
+ 
+ glVertex2f(150,250);
+ glVertex2f(200,250);
+ glVertex2f(425.0/2,425.0/2);
+ glVertex2f(175,225);
+ 
+ glVertex2f(425.0/2,425.0/2);
+ glVertex2f(250,200);
+ glVertex2f(250,150);
+ glVertex2f(225,175);
+  
+ glEnd();
            
-            glClear(GL_COLOR_BUFFER_BIT);
+          //  glClear(GL_COLOR_BUFFER_BIT);
             glBegin(GL_POLYGON);
             glColor3f(0.7f,0.2f,0.2f);
             glVertex2i(30,380);
@@ -239,7 +352,7 @@
             glutInit(&argc,argv);
             glutInitDisplayMode(GLUT_SINGLE|GLUT_RGBA);
             glutInitWindowPosition(0,0);
-            glutInitWindowSize(1000,1000);
+            glutInitWindowSize(700,700);
             glutCreateWindow("System User Interface");
             glutDisplayFunc(display);
             glutMouseFunc(myMouse);
@@ -249,5 +362,4 @@
        
     return 1;
     }
-
 
