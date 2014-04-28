@@ -1,17 +1,15 @@
-	
+#include<stdio.h>
+#include<stdlib.h>
+#include<GL/glut.h>
+#include<math.h>
+#include<string.h>
+#include<unistd.h>
 
-    #include<stdio.h>
-    #include<stdlib.h>
-    #include<GL/glut.h>
-    #include<math.h>
-    #include<string.h>
-    #include<unistd.h>
+//Bubble Sort
 
-    //Bubble Sort
-
-    #define MAX 5
-        int k=0;
-    typedef struct circle
+#define MAX 5
+int k=0;
+typedef struct circle
 {
     GLfloat x;  //x axis of center
     GLfloat y;  //y axis of center
@@ -42,7 +40,6 @@ void initialise()
         printf("%f - %f - %f\n",c[i].x,c[i].y,c[i].r); //for testing purpose don worry
     }
 }
-
 //func to display text on screen char by char
 void bitmap_output(int x, int y, char *string, void *font)
 {
@@ -65,11 +62,6 @@ void int_str(int rad,char r[])
         case 3 : strcpy(r, "3"); break;
         case 4 : strcpy(r, "4"); break;
         case 5 : strcpy(r, "5"); break;
-        //case 6 : strcpy(r, "6"); break;
-       // case 7 : strcpy(r, "7"); break;
-       // case 8 : strcpy(r, "8"); break;
-       // case 9 : strcpy(r, "9"); break;
-       // case 10 : strcpy(r, "10"); break;
     }
     
 }
@@ -82,19 +74,8 @@ void circle_draw(circle c)
     glVertex2f(c.x, c.y);   //center of circle
     for (i=0;i<360;i+=1)
         glVertex2f(c.x + sin(i) * c.r, c.y + cos(i) * c.r);
-    glEnd();
-
-    //display the value of circle below
-    /*int x = c.x-2;
-    int y = c.y-(c.r+10);
-    int rad = c.r / 4;
-    char r[3] = "";
-    int_str(rad,r);
-    //glColor3f(0.0,0.0,0.0);
-    //bitmap_output(x, y, r, GLUT_BITMAP_TIMES_ROMAN_10);*/
-    
+    glEnd();    
 }
-
 // swaps circles cc1 and cc2 by changing their centers
 void swap_circles(circle *cc1,circle *cc2)
 {
@@ -175,12 +156,6 @@ SWAP:
 
 void display_text()
 {
-    //bitmap_output(200, 565, "DYNAMIC SORTING ALGORITHM VISUALISER",GLUT_BITMAP_TIMES_ROMAN_24);//title larger font
-    //glBegin(GL_LINE_LOOP); //to underline the title
-      //  glVertex2f(180, 560);
-       // glVertex2f(750, 560);
-    //glEnd();
-    
     //other text small font
     bitmap_output(50, 160,"This Program Sorts a Random set of numbers in Ascending Order Displaying them graphically as Circles with Varying Radii !!! ",GLUT_BITMAP_9_BY_15);
     bitmap_output(150, 130, "The Given Order Of Circles Is . . . 4 3 1 5 2",GLUT_BITMAP_9_BY_15);
@@ -208,27 +183,11 @@ void front()
 {
     glColor3f(0.3,0.7,0.5);
     bitmap_output(220, 470, "WELCOME",GLUT_BITMAP_TIMES_ROMAN_24);
-    //glBegin(GL_LINE_LOOP); 
-        //glVertex2f(388, 560);
-        //glVertex2f(524, 560);
     glEnd();
     bitmap_output(240, 420, "TO",GLUT_BITMAP_TIMES_ROMAN_24);
-    //glBegin(GL_LINE_LOOP); 
-      //  glVertex2f(438, 531);
-       // glVertex2f(475, 531);
     glEnd();
-
     bitmap_output(150, 370, "DYNAMIC SORTING ALGORITHM VISUALISER",GLUT_BITMAP_TIMES_ROMAN_24);
-    //glBegin(GL_LINE_LOOP); 
-      //  glVertex2f(198, 490);
-       // glVertex2f(731, 490);
     glEnd();
-    //glColor3f(1.0,0.0,0.0);
-    //glBegin(GL_QUADS);
-      //  glVertex2f(594,120.0);glVertex2f(594,145);glVertex2f(836,145);glVertex2f(836,120.0);
-    //glEnd();
-    //glColor3f(0.0,1.0,0.0);
-    //bitmap_output(600, 125, "Press Enter to continue.......",GLUT_BITMAP_HELVETICA_18);
         
 }
 
@@ -236,12 +195,9 @@ void display1(void)
 {
     glClear(GL_COLOR_BUFFER_BIT);
     glColor3f(0.0,0.0,0.0);
-
     if (k==0)
-    front();
-    
-    display_text();
-    
+    front();    
+    display_text();    
     glPointSize(2.0);
     for (int i=0;i<MAX;i++)
     {
@@ -251,14 +207,11 @@ void display1(void)
     if (global_j+1 < MAX && sorting == 1) // call sort only on key press
         sort();
     else
-        sorting = 0;
-    
-    
+        sorting = 0;    
     glFlush();
     glutSwapBuffers();
 
 }
-
 void reshape(int w, int h)
 {
     glViewport(0, 0, w, h);
@@ -271,582 +224,686 @@ void reshape(int w, int h)
 
     glMatrixMode(GL_MODELVIEW);
 }
-
 void init(void)
 {
         glClearColor(0.0,0.0,0.0,0.0);
         glMatrixMode(GL_PROJECTION);
         gluOrtho2D(0.0,500.0,0.0,500.0);
 }
-
 // Icon 2 Working
-
-void *currentfont;
+void *currentfont;     
+void setFont(void *font)
+{ 
+   currentfont=font;
+}
      
-    void setFont(void *font)
-    { 
-        currentfont=font;
+void drawstring(float x,float y,float z,char *str)
+{       
+    char *c;
+    glRasterPos3f(x,y,z);
+    for(c=str;*c!='\0';c++)
+    {      
+     glColor3f(0.0,0.0,0.0);
+     glutBitmapCharacter(currentfont,*c);
     }
-     
-    void drawstring(float x,float y,float z,char *str)
-    {       char *c;
-            glRasterPos3f(x,y,z);
-            for(c=str;*c!='\0';c++)
-            {       glColor3f(0.0,0.0,0.0);
-                    glutBitmapCharacter(currentfont,*c);
-            }
-    }
-
+}
 // Google Search Code
-
 void googlesearchtext() // text in the search space
 {
- setFont(GLUT_BITMAP_HELVETICA_12);
- glColor3f(0.0,0.0,0.0);
- drawstring(155.0,260.0,1.0,"How Does GOOGLE Work ??? ");
- glFlush();
+        setFont(GLUT_BITMAP_HELVETICA_12);
+        glColor3f(0.0,0.0,0.0);
+         drawstring(155.0,260.0,1.0,"How Does GOOGLE Work ??? ");
+        glFlush();
 }
 void googletext() //to display google
 {
- setFont(GLUT_BITMAP_TIMES_ROMAN_24);
- glColor3f(0.0,0.0,1.0);
- drawstring(190.0,300.0,1.0," G ");
- glColor3f(1.0,0.0,0.0);
- drawstring(210.0,300.0,1.0," o ");
- glColor3f(1.0,1.0,0.0);
- drawstring(230.0,300.0,1.0," o ");
- glColor3f(0.0,0.0,1.0);
- drawstring(250.0,300.0,1.0," g ");
- glColor3f(0.0,1.0,0.0);
- drawstring(270.0,300.0,1.0," l ");
- glColor3f(1.0,0.0,0.0);
- drawstring(290.0,300.0,1.0," e ");
- setFont(GLUT_BITMAP_HELVETICA_10);
- glColor3f(0,0,0);
- drawstring(186.0,225.0,1.0,"Google search");
- drawstring(276.0,225.0,1.0,"I'm feeling Lucky");
- glFlush();
-  sleep(1);
- googlesearchtext();
-
+        setFont(GLUT_BITMAP_TIMES_ROMAN_24);
+        glColor3f(0.0,0.0,1.0);
+        drawstring(190.0,300.0,1.0," G ");
+        
+        glColor3f(1.0,0.0,0.0);
+        drawstring(210.0,300.0,1.0," o ");
+        
+        glColor3f(1.0,1.0,0.0);
+        drawstring(230.0,300.0,1.0," o ");
+        
+        glColor3f(0.0,0.0,1.0);
+        drawstring(250.0,300.0,1.0," g ");
+        
+        glColor3f(0.0,1.0,0.0);
+        drawstring(270.0,300.0,1.0," l ");
+        
+        glColor3f(1.0,0.0,0.0);
+        drawstring(290.0,300.0,1.0," e ");
+        
+        setFont(GLUT_BITMAP_HELVETICA_10);
+        glColor3f(0,0,0);
+        drawstring(186.0,225.0,1.0,"Google search");
+        
+        drawstring(276.0,225.0,1.0,"I'm feeling Lucky");
+        glFlush();
+        sleep(1);
+        googlesearchtext();
+               
 }
 void zoomgoogle() //google Zoom
 {
- glClear(GL_COLOR_BUFFER_BIT);
- glBegin(GL_QUADS);
- glColor3f(0.85,0.85,0.85);
- glVertex2f(100,100);
- glVertex2f(400,100);
- glVertex2f(400,400);
- glVertex2f(100,400);
- glEnd();
- glBegin(GL_LINE_LOOP);
- glColor3f(0,0,1);
- glVertex2f(150,253);
- glVertex2f(150,273);
- glVertex2f(340,273);
- glVertex2f(340,253 );
- glEnd();
- glBegin(GL_QUADS);
- glColor3f(0.70,0.70,0.70);
- glVertex2f(175,220);
- glVertex2f(175,235);
- glVertex2f(225,235);
- glVertex2f(225,220);
- glEnd();
- glBegin(GL_QUADS);
- glColor3f(0.70,0.70,0.70);
- glVertex2f(265,220);
- glVertex2f(265,235);
- glVertex2f(315,235);
- glVertex2f(315,220);
- glEnd();
- glFlush();
- googletext();
+         glClear(GL_COLOR_BUFFER_BIT);
+         glBegin(GL_QUADS);
+         glColor3f(0.85,0.85,0.85);
+         glVertex2f(100,100);
+         glVertex2f(400,100);
+         glVertex2f(400,400);
+         glVertex2f(100,400);
+         glEnd();
+         
+         glBegin(GL_LINE_LOOP);
+         glColor3f(0,0,1);
+         glVertex2f(150,253);
+         glVertex2f(150,273);
+         glVertex2f(340,273);
+         glVertex2f(340,253 );
+         glEnd();
+         
+         glBegin(GL_QUADS);
+         glColor3f(0.70,0.70,0.70);
+         glVertex2f(175,220);
+         glVertex2f(175,235);
+         glVertex2f(225,235);
+         glVertex2f(225,220);
+         glEnd();
+         
+         glBegin(GL_QUADS);
+         glColor3f(0.70,0.70,0.70);
+         glVertex2f(265,220);
+         glVertex2f(265,235);
+         glVertex2f(315,235);
+         glVertex2f(315,220);
+         glEnd();
+         glFlush();
+         googletext();
 }
 void google()
 {
- glClear(GL_COLOR_BUFFER_BIT);
- glBegin(GL_QUADS);
- glColor3f(1,1,1);
- glVertex2f(360,210);
- glVertex2f(400,210);
- glVertex2f(400,250);
- glVertex2f(360,250);
- glEnd();
- glFlush();
- sleep(1);
- zoomgoogle();
+        sleep(1);
+        zoomgoogle();
 }
-void display2() //man walking
+void display2()
 {
- float i,j;
- glClear(GL_COLOR_BUFFER_BIT);
- for(i=0;i<200;i=i+1)
- {
-        glBegin(GL_QUADS);
-        glColor3f(1,1,1);
-                glVertex2i(360,210);glVertex2i(400,210);glVertex2i(400,250);glVertex2i(360,250);
-        glColor3f(1,0,0);
-                glVertex2i(50+i,95);glVertex2i(50+i,195);glVertex2i(90+i,195);glVertex2i(90+i,95); //body
-        glColor3f(1,0.5,0);
-                glVertex2i(62+i,195);glVertex2i(78+i,195);glVertex2i(78+i,210);glVertex2i(62+i,210); //neck
-                glVertex2i(50+i,210);glVertex2i(90+i,210);glVertex2i(90+i,240);glVertex2i(50+i,240); //head
-                glVertex2i(75+i,175);glVertex2i(75+i,185);glVertex2i(145+i,175);glVertex2i(143+i,165); //hand
-                glVertex2i(63+i,95);glVertex2i(78+i,95);glVertex2i(78+i,35);glVertex2i(63+i,35); //leg
-                glVertex2i(63+i,35);glVertex2i(88+i,35);glVertex2i(88+i,20);glVertex2i(63+i,20); //feet
-        glEnd();
-        glBegin(GL_TRIANGLES);
-        glColor3f(0.60,0.40,0.70);
-                glVertex2i(88+i,35);glVertex2i(88+i,20);glVertex2i(94+i,20); //toes
-        glColor3f(0,0,0);
-                glVertex2i(75+i,230);glVertex2i(90+i,230);glVertex2i(90+i,235); //eye brows
-                glVertex2i(80+i,223);glVertex2i(90+i,223);glVertex2i(85+i,228); //eyes
-        glEnd();
-        glFlush();
+         float i,j;
+         glClear(GL_COLOR_BUFFER_BIT);
+         glColor3f(0.45,0.45,0.45);
+         glBegin(GL_QUADS);
+         glVertex2f(360,210);
+         glVertex2f(400,210);
+         glVertex2f(400,250);
+         glVertex2f(360,250);
+         glEnd();
+         
+         glColor3f(0,0,0);
+         glBegin(GL_QUADS);
+         glVertex2f(365,215);
+         glVertex2f(395,215);
+         glVertex2f(395,245);
+         glVertex2f(365,245);
+         glEnd();
+         
+         glColor3f(1,1,1);
+         glBegin(GL_QUADS);
+         glVertex2f(371,210);
+         glVertex2f(390,210);
+         glVertex2f(390,200);
+         glVertex2f(371,200);
+         glEnd();
+         glFlush();
+         for(i=0;i<200;i=i+1) 
+         {  
+                glBegin(GL_QUADS);
+                glColor3f(1,1,1);              
+                glColor3f(1,0,0);
+                        glVertex2i(50+i,95);
+                        glVertex2i(50+i,195);
+                        glVertex2i(90+i,195);
+                        glVertex2i(90+i,95); //body
+                glColor3f(1,0.5,0);
+                        glVertex2i(62+i,195);
+                        glVertex2i(78+i,195);
+                        glVertex2i(78+i,210);
+                        glVertex2i(62+i,210); //neck 
+                               
+                        glVertex2i(50+i,210);
+                        glVertex2i(90+i,210);
+                        glVertex2i(90+i,240);
+                        glVertex2i(50+i,240); //head        	      
+                        glVertex2i(75+i,175);
+                        glVertex2i(75+i,185);
+                        glVertex2i(145+i,175);
+                        glVertex2i(143+i,165); //hand 
+                              
+                        glVertex2i(63+i,95);
+                        glVertex2i(78+i,95);
+                        glVertex2i(78+i,35);
+                        glVertex2i(63+i,35); //leg 
+                         
+                        glColor3f(0.60,0.40,0.70);     
+                        glVertex2i(63+i,35);
+                        glVertex2i(88+i,35);
+                        glVertex2i(88+i,20);
+                        glVertex2i(63+i,20); //feet
+                glEnd();
+                
+                glBegin(GL_TRIANGLES);
+                glColor3f(0.60,0.40,0.70);
+                        glVertex2i(88+i,35);
+                        glVertex2i(88+i,20);
+                        glVertex2i(94+i,20); //toes
+                        
+                glColor3f(0,0,0);
+                        glVertex2i(75+i,230);
+                        glVertex2i(90+i,230);
+                        glVertex2i(90+i,235); //eye brows
+                                
+                        glVertex2i(80+i,223);
+                        glVertex2i(90+i,223);
+                        glVertex2i(85+i,228); //eyes
+                        
+                glEnd();
+                glFlush();
+                      
+              glBegin(GL_QUADS);
+              glColor3f(0,0,0);   // to remove traces create movement of frame in black
+	                glVertex2i(50-40+i,95);
+	                glVertex2i(50-40+i,195);
+	                glVertex2i(90-40+i,195);
+	                glVertex2i(90-40+i,95);
+	                
+	                glVertex2i(62-17+i,195);
+	                glVertex2i(78-17+i,195);
+	                glVertex2i(78-17+i,210);
+	                glVertex2i(62-17+i,210);
+	                
+	                glVertex2i(50-40+i,210);
+	                glVertex2i(90-40+i,210);
+	                glVertex2i(90-40+i,240);
+	                glVertex2i(50-40+i,240);
+	                 
+	                glVertex2i(63-15+i,95);
+	                glVertex2i(78-15+i,95);
+	                glVertex2i(78-15+i,35);
+	                glVertex2i(63-15+i,35);
+	                
+	                glVertex2i(63-25+i,35);
+	                glVertex2i(88-25+i,35);
+	                glVertex2i(88-25+i,20);
+	                glVertex2i(63-25+i,20);	                
+              glEnd();
               
-      glBegin(GL_QUADS);
-      glColor3f(0,0,0); // to remove traces create movement of frame in black
-glVertex2i(50-40+i,95);glVertex2i(50-40+i,195);glVertex2i(90-40+i,195);glVertex2i(90-40+i,95);
-glVertex2i(62-17+i,195);glVertex2i(78-17+i,195);glVertex2i(78-17+i,210);glVertex2i(62-17+i,210);
-glVertex2i(50-40+i,210);glVertex2i(90-40+i,210);glVertex2i(90-40+i,240);glVertex2i(50-40+i,240);
-glVertex2i(63-15+i,95); glVertex2i(78-15+i,95);glVertex2i(78-15+i,35);glVertex2i(63-15+i,35);
-glVertex2i(63-25+i,35);glVertex2i(88-25+i,35);glVertex2i(88-25+i,20);glVertex2i(63-25+i,20);
-      glEnd();
-      glBegin(GL_TRIANGLES);
-                glVertex2i(88-35+i,35);glVertex2i(88-35+i,20);glVertex2i(94-35+i,20);
-        glEnd();
-        glFlush();
+              glBegin(GL_TRIANGLES);
+                        glVertex2i(88-35+i,35);
+                        glVertex2i(88-35+i,20);
+                        glVertex2i(94-35+i,20);
+              glEnd();
+              glFlush();
+	  }
+	google();
 }
-google();
-}
-
 void howsearchworks() //after clicking Google Search
 {
- glClear(GL_COLOR_BUFFER_BIT);
- setFont(GLUT_BITMAP_TIMES_ROMAN_24);
- glColor3f(1,1,1);
- drawstring(190,300,1.0,"HOW SEARCH WORKS");
- setFont(GLUT_BITMAP_HELVETICA_18);
- glColor3f(1,1,1);
- drawstring(195,270,1.0,"From Algorithms to Answers.");
- glFlush();
-  setFont(GLUT_BITMAP_HELVETICA_12);
- glColor3f(0.60,0.40,0.70);
- drawstring(300,150,1.0,"Press 1 to Continue.");
- glFlush();
+         glClear(GL_COLOR_BUFFER_BIT);
+         
+         setFont(GLUT_BITMAP_TIMES_ROMAN_24);         
+         glColor3f(1,1,1);
+         drawstring(190,300,1.0,"HOW SEARCH WORKS");
+         
+         setFont(GLUT_BITMAP_HELVETICA_18);         
+         glColor3f(1,1,1);
+         drawstring(195,270,1.0,"From Algorithms to Answers.");
+ 
+         setFont(GLUT_BITMAP_HELVETICA_12);
+         glColor3f(0.60,0.40,0.70);
+         drawstring(300,150,1.0,"Press 1 to Continue.");
+         
+         glFlush();
 }
 
 void howsearchworks1() // 60 Trillion
 {
- glClear(GL_COLOR_BUFFER_BIT);
- glColor3f(0.65,0.85,0.85);
- glBegin(GL_QUADS);
- glVertex2f(0,500);
- glVertex2f(250,500);
- glVertex2f(250,250);
- glVertex2f(0,250);
- glEnd();
- glFlush();
- 
- setFont(GLUT_BITMAP_HELVETICA_12);
- glColor3f(0,0,0);
- drawstring(45,420,1.0,"SEARCH STARTS WITH THE WEB. IT'S MADE UP OF OVER");
- 
- setFont(GLUT_BITMAP_TIMES_ROMAN_24);
- glColor3f(1,0,0);
- drawstring(100,380,1.0,"60");
- 
- setFont(GLUT_BITMAP_TIMES_ROMAN_24);
- glColor3f(1,0,0);
- drawstring(85,360,1.0,"TRILLION");
+         glClear(GL_COLOR_BUFFER_BIT);
+         glColor3f(0.65,0.85,0.85);
+         glBegin(GL_QUADS);
+         glVertex2f(0,500);
+         glVertex2f(250,500);
+         glVertex2f(250,250);
+         glVertex2f(0,250);
+         glEnd();
+         glFlush();
+         
+         setFont(GLUT_BITMAP_HELVETICA_12);
+         glColor3f(0,0,0);
+         drawstring(45,420,1.0,"SEARCH STARTS WITH THE WEB. IT'S MADE UP OF OVER");
+         
+         setFont(GLUT_BITMAP_TIMES_ROMAN_24);
+         glColor3f(1,0,0);
+         drawstring(100,380,1.0,"60");
+         
+         setFont(GLUT_BITMAP_TIMES_ROMAN_24);
+         glColor3f(1,0,0);
+         drawstring(85,360,1.0,"TRILLION");
 
- setFont(GLUT_BITMAP_HELVETICA_18);
- glColor3f(1,1,0);
- drawstring(80,330,1.0,"Individual Pages");
- 
- setFont(GLUT_BITMAP_9_BY_15);
- glColor3f(1,0,0);
- drawstring(65,320,1.0,"And its constantly growing.");
+         setFont(GLUT_BITMAP_HELVETICA_18);
+         glColor3f(1,1,0);
+         drawstring(80,330,1.0,"Individual Pages");
+         
+         setFont(GLUT_BITMAP_9_BY_15);
+         glColor3f(1,0,0);
+         drawstring(65,320,1.0,"And its constantly growing.");
 
- setFont(GLUT_BITMAP_HELVETICA_12);
- glColor3f(0.60,0.40,0.70);
- drawstring(200,300,1.0,"Press 2 to Continue.");
- glFlush();
+         setFont(GLUT_BITMAP_HELVETICA_12);
+         glColor3f(0.60,0.40,0.70);
+         drawstring(200,300,1.0,"Press 2 to Continue.");
+         
+         glFlush();
 }
 
 void howsearchworks2() //crawling
 {
- glClear(GL_COLOR_BUFFER_BIT);
- glColor3f(0.65,0.65,0.65);
- glBegin(GL_QUADS);
- glVertex2f(0,500);
- glVertex2f(250,500);
- glVertex2f(250,250);
- glVertex2f(0,250);
- glEnd();
- glFlush();
- 
- setFont(GLUT_BITMAP_HELVETICA_12);
- glColor3f(0,0,0);
- drawstring(45,420,1.0,"SEARCH STARTS WITH THE WEB. IT'S MADE UP OF OVER");
- 
- setFont(GLUT_BITMAP_TIMES_ROMAN_24);
- glColor3f(1,1,1);
- drawstring(100,380,1.0,"60");
- 
- setFont(GLUT_BITMAP_TIMES_ROMAN_24);
- glColor3f(1,1,1);
- drawstring(85,360,1.0,"TRILLION");
+         glClear(GL_COLOR_BUFFER_BIT);
+         glColor3f(0.65,0.65,0.65);
+         glBegin(GL_QUADS);
+         glVertex2f(0,500);
+         glVertex2f(250,500);
+         glVertex2f(250,250);
+         glVertex2f(0,250);
+         glEnd();
+         glFlush();
+         
+         setFont(GLUT_BITMAP_HELVETICA_12);
+         glColor3f(0,0,0);
+         drawstring(45,420,1.0,"SEARCH STARTS WITH THE WEB. IT'S MADE UP OF OVER");
+         
+         setFont(GLUT_BITMAP_TIMES_ROMAN_24);
+         glColor3f(1,1,1);
+         drawstring(100,380,1.0,"60");
+         
+         setFont(GLUT_BITMAP_TIMES_ROMAN_24);
+         glColor3f(1,1,1);
+         drawstring(85,360,1.0,"TRILLION");
 
- setFont(GLUT_BITMAP_HELVETICA_18);
- glColor3f(1,1,1);
- drawstring(80,330,1.0,"Individual Pages");
- 
- setFont(GLUT_BITMAP_9_BY_15);
- glColor3f(1,1,1);
- drawstring(65,320,1.0,"And its constantly growing.");
+         setFont(GLUT_BITMAP_HELVETICA_18);
+         glColor3f(1,1,1);
+         drawstring(80,330,1.0,"Individual Pages");
+         
+         setFont(GLUT_BITMAP_9_BY_15);
+         glColor3f(1,1,1);
+         drawstring(65,320,1.0,"And its constantly growing.");
 
- setFont(GLUT_BITMAP_HELVETICA_12);
- glColor3f(0,0,0);
- drawstring(200,300,1.0,"Press 2 to Continue.");
- glFlush();
-  
- glColor3f(0.65,0.85,0.85);
- glBegin(GL_QUADS);
- glVertex2f(250,500);
- glVertex2f(500,500);
- glVertex2f(500,250);
- glVertex2f(250,250);
- glEnd();
- 
- glColor3f(0,0,0);
-  setFont(GLUT_BITMAP_HELVETICA_18);
-  drawstring(341,455,1.0,"Google Navigates the Web by");
- 
-  setFont(GLUT_BITMAP_TIMES_ROMAN_24);
-  glColor3f(1,0,0);
-  drawstring(340,410,1.0,"C");
-  drawstring(340,395,1.0,"R");
-  drawstring(340,380,1.0,"A");
-  drawstring(340,365,1.0,"W");
-  drawstring(340,350,1.0,"L");
-  drawstring(340,335,1.0,"I");
-  drawstring(340,320,1.0,"N");
-  drawstring(340,305,1.0,"G");
-  
- setFont(GLUT_BITMAP_9_BY_15);
- glColor3f(0,0,0);
- drawstring(400,390,1.0,"That means,");
- 
- glColor3f(0,0,0);
- setFont(GLUT_BITMAP_9_BY_15);
- drawstring(400,380,1.0,"It follows links from");
- 
- glColor3f(0,0,0);
- setFont(GLUT_BITMAP_9_BY_15);
- drawstring(400,370,1.0,"page to page");
- 
- glColor3f(0,0,1);
- setFont(GLUT_BITMAP_9_BY_15);
- drawstring(400,350,1.0,"site owners choose");
- 
- glColor3f(0,0,1);
- setFont(GLUT_BITMAP_9_BY_15);
- drawstring(400,340,1.0,"whether their sites");
- 
- glColor3f(0,0,1);
- setFont(GLUT_BITMAP_9_BY_15);
- drawstring(400,330,1.0,"are crawled");
- 
- setFont(GLUT_BITMAP_HELVETICA_12);
- glColor3f(0.60,0.40,0.70);
- drawstring(420,290,1.0,"Press 3 to Continue.");
- glFlush();
+         setFont(GLUT_BITMAP_HELVETICA_12);
+         glColor3f(0,0,0);
+         drawstring(200,300,1.0,"Press 2 to Continue.");
+         glFlush();
+          
+         glColor3f(0.65,0.85,0.85);
+         glBegin(GL_QUADS);
+         glVertex2f(250,500);
+         glVertex2f(500,500);
+         glVertex2f(500,250);
+         glVertex2f(250,250);
+         glEnd();
+         
+         glColor3f(0,0,0);
+         setFont(GLUT_BITMAP_HELVETICA_18);
+         drawstring(341,455,1.0,"Google Navigates the Web by");
+         
+         setFont(GLUT_BITMAP_TIMES_ROMAN_24);
+         glColor3f(1,0,0);
+         drawstring(340,410,1.0,"C");
+         
+         glColor3f(1,0,0);
+         drawstring(340,395,1.0,"R");
+         
+         glColor3f(1,0,0);         
+         drawstring(340,380,1.0,"A");
+         
+         glColor3f(1,0,0);
+         drawstring(340,365,1.0,"W");
+         
+         glColor3f(1,0,0);
+         drawstring(340,350,1.0,"L");
+         
+         glColor3f(1,0,0);
+         drawstring(340,335,1.0,"I");
+         
+         glColor3f(1,0,0);
+         drawstring(340,320,1.0,"N");
+         
+         glColor3f(1,0,0);
+         drawstring(340,305,1.0,"G");
+          
+         setFont(GLUT_BITMAP_9_BY_15);
+         glColor3f(0,0,0);
+         drawstring(400,390,1.0,"That means,");
+         
+         glColor3f(0,0,0);
+         setFont(GLUT_BITMAP_9_BY_15);
+         drawstring(400,380,1.0,"It follows links from");
+         
+         glColor3f(0,0,0);
+         setFont(GLUT_BITMAP_9_BY_15);
+         drawstring(400,370,1.0,"page to page");
+         
+         glColor3f(0,0,1);
+         setFont(GLUT_BITMAP_9_BY_15);
+         drawstring(400,350,1.0,"site owners choose");
+         
+         glColor3f(0,0,1);
+         setFont(GLUT_BITMAP_9_BY_15);
+         drawstring(400,340,1.0,"whether their sites");
+         
+         glColor3f(0,0,1);
+         setFont(GLUT_BITMAP_9_BY_15);
+         drawstring(400,330,1.0,"are crawled");
+         
+         setFont(GLUT_BITMAP_HELVETICA_12);
+         glColor3f(0.60,0.40,0.70);
+         drawstring(420,290,1.0,"Press 3 to Continue.");
+         glFlush();
 }
 
 void howsearchworks3() //Index
 {
- glColor3f(0.65,0.65,0.65);
- glBegin(GL_QUADS);
- glVertex2f(250,500);
- glVertex2f(500,500);
- glVertex2f(500,250);
- glVertex2f(250,250);
- glEnd();
- glColor3f(0,0,0);
-  setFont(GLUT_BITMAP_HELVETICA_18);
-  drawstring(341,455,1.0,"Google Navigates the Web by");
-  setFont(GLUT_BITMAP_TIMES_ROMAN_24);
-  glColor3f(1,1,1);
-  drawstring(340,410,1.0,"C");
-  glColor3f(1,1,1);
-  drawstring(340,395,1.0,"R");
-  glColor3f(1,1,1);
-  drawstring(340,380,1.0,"A");
-  glColor3f(1,1,1);
-  drawstring(340,365,1.0,"W");
-  glColor3f(1,1,1);
-  drawstring(340,350,1.0,"L");
-  glColor3f(1,1,1);
-  drawstring(340,335,1.0,"I");
-  glColor3f(1,1,1);
-  drawstring(340,320,1.0,"N");
-  glColor3f(1,1,1);
-  drawstring(340,305,1.0,"G");
- setFont(GLUT_BITMAP_9_BY_15);
- glColor3f(1,1,1);
- drawstring(400,390,1.0,"That means,");
- glColor3f(1,1,1);
- setFont(GLUT_BITMAP_9_BY_15);
- drawstring(400,380,1.0,"It follows links from");
- glColor3f(1,1,1);
- setFont(GLUT_BITMAP_9_BY_15);
- drawstring(400,370,1.0,"page to page");
- glColor3f(0,0,0);
- setFont(GLUT_BITMAP_9_BY_15);
- drawstring(400,350,1.0,"site owners choose");
- glColor3f(0,0,0);
- setFont(GLUT_BITMAP_9_BY_15);
- drawstring(400,340,1.0,"whether their sites");
- glColor3f(0,0,0);
- setFont(GLUT_BITMAP_9_BY_15);
- drawstring(400,330,1.0,"are crawled");
- setFont(GLUT_BITMAP_HELVETICA_12);
- glColor3f(0.60,0.40,0.70);
- drawstring(420,290,1.0,"Press 3 to Continue.");
+         glColor3f(0.65,0.65,0.65);
+         glBegin(GL_QUADS);
+         glVertex2f(250,500);
+         glVertex2f(500,500);
+         glVertex2f(500,250);
+         glVertex2f(250,250);
+         glEnd();
+         
+         glColor3f(0,0,0);
+         setFont(GLUT_BITMAP_HELVETICA_18);
+         drawstring(341,455,1.0,"Google Navigates the Web by");
+         setFont(GLUT_BITMAP_TIMES_ROMAN_24);
+         
+         glColor3f(1,1,1);
+         drawstring(340,410,1.0,"C");
+         
+         glColor3f(1,1,1);
+         drawstring(340,395,1.0,"R");
+         
+         glColor3f(1,1,1);
+         drawstring(340,380,1.0,"A");
+         
+         glColor3f(1,1,1);
+         drawstring(340,365,1.0,"W");
+         
+         glColor3f(1,1,1);
+         drawstring(340,350,1.0,"L");
+         
+         glColor3f(1,1,1);
+         drawstring(340,335,1.0,"I");
+         
+         glColor3f(1,1,1);
+         drawstring(340,320,1.0,"N");
+         
+         glColor3f(1,1,1);
+         drawstring(340,305,1.0,"G");
+         setFont(GLUT_BITMAP_9_BY_15);
+         
+         glColor3f(1,1,1);
+         drawstring(400,390,1.0,"That means,");
+         
+         glColor3f(1,1,1);
+         setFont(GLUT_BITMAP_9_BY_15);
+         drawstring(400,380,1.0,"It follows links from");
+         
+         glColor3f(1,1,1);
+         setFont(GLUT_BITMAP_9_BY_15);
+         drawstring(400,370,1.0,"page to page");
+         
+         glColor3f(0,0,0);
+         setFont(GLUT_BITMAP_9_BY_15);
+         drawstring(400,350,1.0,"site owners choose");
+         
+         glColor3f(0,0,0);
+         setFont(GLUT_BITMAP_9_BY_15);
+         drawstring(400,340,1.0,"whether their sites");
+         
+         glColor3f(0,0,0);
+         setFont(GLUT_BITMAP_9_BY_15);
+         drawstring(400,330,1.0,"are crawled");
+         
+         glColor3f(0.60,0.40,0.70);
+         setFont(GLUT_BITMAP_HELVETICA_12);
+         drawstring(420,290,1.0,"Press 3 to Continue.");
 
- glColor3f(0.45,0.45,0.85);
- glBegin(GL_QUADS);
- glVertex2f(250,250);
- glVertex2f(500,250);
- glVertex2f(500,0);
- glVertex2f(250,0);
- glEnd();
- 
- setFont(GLUT_BITMAP_HELVETICA_18);
- glColor3f(0,0,0);
- drawstring(320,215,1.0,"And it keeps track of it all in . . .");
- 
-  setFont(GLUT_BITMAP_TIMES_ROMAN_24);
-  glColor3f(1,0,0);
-  drawstring(295,150,1.0,"THE");
-  
-  setFont(GLUT_BITMAP_TIMES_ROMAN_24);
-  glColor3f(0,1,0);
-  drawstring(320,150,1.0,"I");
-  glColor3f(0,1,0);
-  drawstring(330,135,1.0,"N");
-  glColor3f(0,1,0);
-  drawstring(340,120,1.0,"D");
-  glColor3f(0,1,0);
-  drawstring(350,105,1.0,"E");
-  glColor3f(0,1,0);
-  drawstring(360,90,1.0,"X");
-  
- setFont(GLUT_BITMAP_9_BY_15);
- glColor3f(0,0,0);
- drawstring(400,150,1.0,"The Index is over");
- glColor3f(0,0,0);
- drawstring(400,130,1.0,"100 MILLION Gigabytes");
- glFlush();
- 
- 
+         glColor3f(0.45,0.45,0.85);
+         glBegin(GL_QUADS);
+         glVertex2f(250,250);
+         glVertex2f(500,250);
+         glVertex2f(500,0);
+         glVertex2f(250,0);
+         glEnd();
+         
+         setFont(GLUT_BITMAP_HELVETICA_18);
+         glColor3f(0,0,0);
+         drawstring(320,215,1.0,"And it keeps track of it all in . . .");
+         
+         setFont(GLUT_BITMAP_TIMES_ROMAN_24);
+         glColor3f(1,0,0);
+         drawstring(295,150,1.0,"THE");
+          
+         setFont(GLUT_BITMAP_TIMES_ROMAN_24);
+         glColor3f(0,1,0);
+         drawstring(320,150,1.0,"I");
+         
+         glColor3f(0,1,0);
+         drawstring(330,135,1.0,"N");
+         
+         glColor3f(0,1,0);
+         drawstring(340,120,1.0,"D");
+         
+         glColor3f(0,1,0);
+         drawstring(350,105,1.0,"E");
+         
+         glColor3f(0,1,0);
+         drawstring(360,90,1.0,"X");
+          
+         setFont(GLUT_BITMAP_9_BY_15);
+         glColor3f(0,0,0);
+         drawstring(400,150,1.0,"The Index is over");
+         
+         glColor3f(0,0,0);
+         drawstring(400,130,1.0,"100 MILLION Gigabytes");
+         glFlush();                  
 }
     
-    void myInit()
-    {       glClearColor(0.0,0.0,0.0,0.0);
-            glColor3f(0.0f,0.0f,0.0f);
-            glPointSize(1.0);
-            glLineWidth(2.0);
-            gluOrtho2D(0.0,500.0,0.0,500.0);
-            glMatrixMode(GL_PROJECTION);
-            glLoadIdentity();
-            setFont(GLUT_BITMAP_HELVETICA_18);
-    }
+void myInit()
+{       
+        glClearColor(0.0,0.0,0.0,0.0);
+        glColor3f(0.0f,0.0f,0.0f);
+        glPointSize(1.0);
+        glLineWidth(2.0);
+        gluOrtho2D(0.0,500.0,0.0,500.0);
+        glMatrixMode(GL_PROJECTION);
+        glLoadIdentity();
+        setFont(GLUT_BITMAP_HELVETICA_18);
+}
     
-    void draw_key_int(void)                         // text for keyboard interaction
-    {       
-            glColor3f(0.0,0.0,0.0);
-            glBegin(GL_POLYGON);
-            glVertex2f(0,0);
-            glVertex2f(0,135);
-            glVertex2f(500,135);
-            glVertex2f(500,0);
-            glEnd();
-            glFlush();
-            glColor3f(0.0f,1.0f,1.0f);
-            setFont(GLUT_BITMAP_HELVETICA_18);
-            drawstring(360.0,100.0,1.0,"DO U WISH TO CONTINUE?");
-            glColor3f(0.0f,1.0f,1.0f);
-            drawstring(360.0,80.0,1.0,"PRESS  Y/N");
-            glFlush();
-    }
-     
-    void text(void)                                                                                 // to draw the text in menu screen
-    {
-            setFont(GLUT_BITMAP_HELVETICA_18);
-            glColor3f(1.0,1.0,1.0);
-            drawstring(200.0,355.0,1.0,"           GRAPHICAL SYSTEM");                             
-            glColor3f(1.0,1.0,1.0);
-            drawstring(235.0,250.0,1.0,"    Loading...");
-            glColor3f(1.0,1.0,1.0);
-            drawstring(360.0,80.0,1.0,"            Press P to proceed");
-            glFlush();
-    }
-     
-    void desktop(void)
-     
-    {
-    
-            glClear(GL_COLOR_BUFFER_BIT);
- 
-            glBegin(GL_LINES);
-            glColor3f(1,0,0);
- 
-            glVertex2f(200,250);
-            glVertex2f(250,400);
- 
-            glVertex2f(150,250);
-            glVertex2f(250,350);
- 
-            glVertex2f(100,250);
-            glVertex2f(250,300);
- 
-            glVertex2f(250,400);
-            glVertex2f(300,250);
+void draw_key_int(void)                         // text for keyboard interaction
+{
+        glColor3f(0.0,0.0,0.0);
+        glBegin(GL_POLYGON);
+        glVertex2f(0,0);
+        glVertex2f(0,135);
+        glVertex2f(500,135);
+        glVertex2f(500,0);
+        glEnd();
 
-            glVertex2f(250,350);
-            glVertex2f(350,250);
- 
-            glVertex2f(250,300);
-            glVertex2f(400,250);
- 
-            glVertex2f(250,100);
-            glVertex2f(200,250);
+        glColor3f(0.0f,1.0f,1.0f);
+        setFont(GLUT_BITMAP_HELVETICA_18);
+        drawstring(360.0,100.0,1.0,"DO U WISH TO CONTINUE?");
+        glColor3f(0.0f,1.0f,1.0f);
+        drawstring(360.0,80.0,1.0,"PRESS  Y/N");
+        glFlush();
+}
+     
+void text(void)                                                                                 // to draw the text in menu screen
+{
+        setFont(GLUT_BITMAP_HELVETICA_18);
+        
+        glColor3f(1.0,1.0,1.0);
+        drawstring(200.0,355.0,1.0,"           GRAPHICAL SYSTEM");                             
+        
+        glColor3f(1.0,1.0,1.0);
+        drawstring(235.0,250.0,1.0,"    Loading...");
+        
+        glColor3f(1.0,1.0,1.0);
+        drawstring(360.0,80.0,1.0,"            Press P to proceed");
+        glFlush();
+}
+     
+void desktop(void)    
+{    
+        glClear(GL_COLOR_BUFFER_BIT);
+         
+        glBegin(GL_LINES);
+        glColor3f(1,0,0);
+         
+        glVertex2f(200,250);
+        glVertex2f(250,400);
+         
+        glVertex2f(150,250);
+        glVertex2f(250,350);
+         
+        glVertex2f(100,250);
+        glVertex2f(250,300);
+         
+        glVertex2f(250,400);
+        glVertex2f(300,250);
 
-            glVertex2f(250,150);
-            glVertex2f(150,250);
- 
-            glVertex2f(250,200);
-            glVertex2f(100,250);
- 
-            glVertex2f(250,100);
-            glVertex2f(300,250);
- 
-            glVertex2f(250,150);
-            glVertex2f(350,250);
- 
-            glVertex2f(250,200);
-            glVertex2f(400,250);
- 
-            glVertex2f(250,400);
-            glVertex2f(250,100);
- 
-            glVertex2f(100,250);
-            glVertex2f(400,250);
- 
- 
-            glEnd();
- 
-            glBegin(GL_TRIANGLES);
-            glColor3f(1,0,0);
- 
- //second quadrant
-            glVertex2f(250,400);
-            glVertex2f(250,350);
-            glVertex2f(225,325);
- 
-            glVertex2f(225,325);
-            glVertex2f(425.0/2,575.0/2);
-            glVertex2f(175,275);
- 
-            glVertex2f(175,275);
-            glVertex2f(150,250);
-            glVertex2f(100,250);
- //end
- //4th quadrant
-            glVertex2f(400,250);
-            glVertex2f(350,250);
-            glVertex2f(325,225);
- 
-            glVertex2f(325,225);
-            glVertex2f(575.0/2,425.0/2);
-            glVertex2f(275,175);
- 
-            glVertex2f(275,175);
-            glVertex2f(250,100);
-            glVertex2f(250,150);
-            glEnd();
+        glVertex2f(250,350);
+        glVertex2f(350,250);
+         
+        glVertex2f(250,300);
+        glVertex2f(400,250);
+         
+        glVertex2f(250,100);
+        glVertex2f(200,250);
 
-            glBegin(GL_QUADS);
-            glColor3f(1,0,0);
- 
-            glVertex2f(425.0/2,575.0/2);
-            glVertex2f(250,300);
-            glVertex2f(250,250);
-            glVertex2f(200,250);
- 
-            glVertex2f(250,350);
-            glVertex2f(250,300);
-            glVertex2f(575.0/2,575.0/2);
-            glVertex2f(275,325);
- 
-            glVertex2f(575.0/2,575.0/2);
-            glVertex2f(300,250);
-            glVertex2f(350,250);
-            glVertex2f(325,275);
- 
-            glVertex2f(250,250);
-            glVertex2f(250,200);
-            glVertex2f(575.0/2,425.0/2);
-            glVertex2f(300,250);
- 
-            glVertex2f(150,250);
-            glVertex2f(200,250);
-            glVertex2f(425.0/2,425.0/2);
-            glVertex2f(175,225);
- 
-            glVertex2f(425.0/2,425.0/2);
-            glVertex2f(250,200);
-            glVertex2f(250,150);
-            glVertex2f(225,175);
-  
-            glEnd();
-           
-          // Code for the icons on the Desktop
+        glVertex2f(250,150);
+        glVertex2f(150,250);
+         
+        glVertex2f(250,200);
+        glVertex2f(100,250);
+         
+        glVertex2f(250,100);
+        glVertex2f(300,250);
+         
+        glVertex2f(250,150);
+        glVertex2f(350,250);
+         
+        glVertex2f(250,200);
+        glVertex2f(400,250);
+         
+        glVertex2f(250,400);
+        glVertex2f(250,100);
+         
+        glVertex2f(100,250);
+        glVertex2f(400,250);
+         
+        glEnd();
+         
+        glBegin(GL_TRIANGLES);
+        glColor3f(1,0,0);
+        glVertex2f(250,400);
+        glVertex2f(250,350);
+        glVertex2f(225,325);
+         
+        glVertex2f(225,325);
+        glVertex2f(425.0/2,575.0/2);
+        glVertex2f(175,275);
+         
+        glVertex2f(175,275);
+        glVertex2f(150,250);
+        glVertex2f(100,250);
 
-            glBegin(GL_POLYGON);
-            glColor3f(0.7f,0.2f,0.2f);
-            glVertex2i(60.0,380.0);
-            glVertex2i(30.0,380.0);
-            glVertex2i(30.0,350.0);
-            glVertex2i(60.0,350.0);
-            glEnd();
-            glFlush();
-            glBegin(GL_POLYGON);
-            glColor3f(0.7f,0.2f,0.2f);
-            glVertex2i(60.0,300.0);
-            glVertex2i(30.0,300.0);
-            glVertex2i(30.0,270.0);
-            glVertex2i(60.0,270.0);
-            glEnd();
-            glFlush();
-            glBegin(GL_POLYGON);
-            glColor3f(0.7f,0.2f,0.2f);
-            glVertex2i(60.0,220.0);
-            glVertex2i(30.0,220.0);
-            glVertex2i(30.0,190.0);
-            glVertex2i(60.0,190.0);
-            glEnd();
-            glFlush();
+        glVertex2f(400,250);
+        glVertex2f(350,250);
+        glVertex2f(325,225);
+         
+        glVertex2f(325,225);
+        glVertex2f(575.0/2,425.0/2);
+        glVertex2f(275,175);
+         
+        glVertex2f(275,175);
+        glVertex2f(250,100);
+        glVertex2f(250,150);
+        glEnd();
+
+        glBegin(GL_QUADS);
+        glColor3f(1,0,0);
+         
+        glVertex2f(425.0/2,575.0/2);
+        glVertex2f(250,300);
+        glVertex2f(250,250);
+        glVertex2f(200,250);
+         
+        glVertex2f(250,350);
+        glVertex2f(250,300);
+        glVertex2f(575.0/2,575.0/2);
+        glVertex2f(275,325);
+         
+        glVertex2f(575.0/2,575.0/2);
+        glVertex2f(300,250);
+        glVertex2f(350,250);
+        glVertex2f(325,275);
+         
+        glVertex2f(250,250);
+        glVertex2f(250,200);
+        glVertex2f(575.0/2,425.0/2);
+        glVertex2f(300,250);
+         
+        glVertex2f(150,250);
+        glVertex2f(200,250);
+        glVertex2f(425.0/2,425.0/2);
+        glVertex2f(175,225);
+         
+        glVertex2f(425.0/2,425.0/2);
+        glVertex2f(250,200);
+        glVertex2f(250,150);
+        glVertex2f(225,175);
+          
+        glEnd();                   
+                  // Code for the icons on the Desktop
+        glBegin(GL_POLYGON);
+        glColor3f(0.7f,0.2f,0.2f);
+        glVertex2i(60.0,380.0);
+        glVertex2i(30.0,380.0);
+        glVertex2i(30.0,350.0);
+        glVertex2i(60.0,350.0);
+        glEnd();
+
+        glBegin(GL_POLYGON);
+        glColor3f(0.7f,0.2f,0.2f);
+        glVertex2i(60.0,300.0);
+        glVertex2i(30.0,300.0);
+        glVertex2i(30.0,270.0);
+        glVertex2i(60.0,270.0);
+        glEnd();
+
+        glBegin(GL_POLYGON);
+        glColor3f(0.7f,0.2f,0.2f);
+        glVertex2i(60.0,220.0);
+        glVertex2i(30.0,220.0);
+        glVertex2i(30.0,190.0);
+        glVertex2i(60.0,190.0);
+        glEnd();
+        glFlush();    
+}
      
      
-    }
-     
-     
-    void draw() // TO DRAW POLYGON FOR LOADING
-    {
+void draw() // TO DRAW POLYGON FOR LOADING
+{
             glClear(GL_COLOR_BUFFER_BIT);
             glBegin(GL_POLYGON);  
             glColor3f(0.7f,0.2f,0.2f);
@@ -855,7 +912,7 @@ void howsearchworks3() //Index
             glVertex2i(200,280);
             glVertex2i(280,280);
             glEnd();
-            glFlush();
+
             glBegin(GL_POLYGON);  
             glColor3f(0.3f,0.4f,0.5f);
             glVertex2i(300,275);
@@ -863,7 +920,7 @@ void howsearchworks3() //Index
             glVertex2i(285,280);
             glVertex2i(300,280);
             glEnd();
-            glFlush();
+
             glBegin(GL_POLYGON);
             glColor3f(0.1f,0.4f,0.9f);
             glVertex2i(320,275);
@@ -873,12 +930,12 @@ void howsearchworks3() //Index
             glEnd();
             glFlush();
      
-    }
+}
 
     
      
-    void title()                                                                                            // to draw the starting screen
-    {       
+void title()                                                                                            // to draw the starting screen
+{       
             glClear(GL_COLOR_BUFFER_BIT);
             setFont(GLUT_BITMAP_HELVETICA_18);
             glColor3f(1.0,1.0,1.0);
@@ -902,154 +959,126 @@ void howsearchworks3() //Index
             drawstring(140.0,140.0,1.0,"                    BMSIT                                                                      BMSIT");
             draw_key_int();
             glFlush();
-    }
-     
-    void mykeyboard(unsigned char key,int x,int y)
-    {  
+}     
+void mykeyboard(unsigned char key,int x,int y)
+{  
         if(key=='y' || key=='Y')
-            {      
+        {      
                    glClear(GL_COLOR_BUFFER_BIT);
                    draw();
                    text();
 
-            }
+        }
         else if(key=='N' || key=='n')
-                    exit(0);
+                   exit(0);
         else if(key=='P' || key=='p')
-           {       
+        {       
                    glClear(GL_COLOR_BUFFER_BIT);
                    desktop();  
-           }
+        }
         else if(key=='t' || key=='T')
-                   {
+        {
                      glClear(GL_COLOR_BUFFER_BIT);
                      title();
-                   }
-            if(key==13)
+        }
+        if(key==13)
               k=1;
-            if (k==1)
-            {
+        if (k==1)
+        {
               switch (key)
-            {
-              case 27 : exit (0); //27 is the ascii code for the ESC key
-              case 's' : sorting = 1; break;
-              case 'r' : initialise(); break;
-            }
-            }
-            if(key=='1')
-       {
-                   glClear(GL_COLOR_BUFFER_BIT);
-                   howsearchworks1();
-       }
+              {
+                case 27 : exit (0); //27 is the ascii code for the ESC key
+                case 's' : sorting = 1; break;
+                case 'r' : initialise(); break;
+              }
+        }
+        if(key=='1')
+        {
+         glClear(GL_COLOR_BUFFER_BIT);
+         howsearchworks1();
+        }
        if(key=='2')
                    howsearchworks2();
-
        if(key=='3')
-                   howsearchworks3();
-           
+                   howsearchworks3();           
        if(key=='b' || key=='B')
                    howsearchworks();
             
-            }
+}
      
-    void myMouse(int btn, int state, int x, int y)
-    {       
+void myMouse(int btn, int state, int x, int y)
+{       
         if(btn==GLUT_LEFT_BUTTON && state == GLUT_DOWN )
-            {      
-                    x=x/2.732;
-                    y=(768-y)/1.536;
-                    if ((x>=30.0 && x<=60.0) && (y>=350.0 && y<=380.0 ))// Icon 1
-                    {                                   
-                            /*glBegin(GL_POLYGON);
-                            glColor3f(0.2f,1.0f,0.5f);
-                            glVertex2i(60.0,380.0);
-                            glVertex2i(30.0,380.0);
-                            glVertex2i(30.0,350.0);
-                            glVertex2i(60.0,350.0);
-                            glEnd();
-                            glFlush();
-                            sleep(2);
-                            glClear(GL_COLOR_BUFFER_BIT);
-                            
-                            
-                            glutInitDisplayMode(GLUT_DOUBLE|GLUT_RGB);
-                            glutInitWindowPosition(0,0);
-                            glutInitWindowSize(1366,768);
-                            glutCreateWindow("Dynamic Sorting Algorithm Visualiser");
-                            init();
-                            initialise();       
-                            glutDisplayFunc(display1);
-                            glutIdleFunc(display1);
-                            glutMainLoop();*/
-                            
-                    }
-                    if((x>=35.0 && x<=65.0) && (y>=275.0 && y<=305.0 ))//   Icon 2
-                    {       
-                           glBegin(GL_POLYGON);
-                           glColor3f(1,1,1);
-                           glVertex2f(30,300);
-                           glVertex2f(30,270);
-                           glVertex2f(60,270);
-                           glVertex2f(60,300);
-                           glEnd();
-                           glFlush();
-                           sleep(1);
-                           display2();
-                           
-                     }
-                     
-                     if(btn==GLUT_LEFT_BUTTON && state==GLUT_DOWN && x>=175.0 && x<=225.0 && y>=220.0 && y<=235.0)
-                     {
-                        //glEnd();
-                       //glFlush();
-                      howsearchworks();
-                     }
-                     
-                    if((x>=30.0 && x<=60.0) && (y>=190.0 && y<=220.0 ))  // 3 menu
-                    {
-                           glBegin(GL_POLYGON);
-                            glColor3f(0.2f,1.0f,0.5f);
-                            glVertex2i(60.0,220.0);
-                            glVertex2i(30.0,220.0);
-                            glVertex2i(30.0,190.0);
-                            glVertex2i(60.0,190.0);
-                            glEnd();
-                            glFlush();
-                            sleep(2);
-                            glClear(GL_COLOR_BUFFER_BIT);
-                            
-                            
-                            glutInitDisplayMode(GLUT_DOUBLE|GLUT_RGB);
-                            glutInitWindowPosition(0,0);
-                            glutInitWindowSize(1366,768);
-                            glutCreateWindow("Dynamic Sorting Algorithm Visualiser");
-                            init();
-                            initialise();       
-                            glutDisplayFunc(display1);
-                            glutIdleFunc(display1);
-                            glutMainLoop();
-                   
+        {
+                x=x/2.88;
+                y=(900-y)/1.8;       
+        if(btn==GLUT_LEFT_BUTTON && state==GLUT_DOWN && x>=175.0 && x<=225.0 && y>=220.0 && y<=235.0)
+        {                  
+                glBegin(GL_POLYGON);
+                glColor3f(0.5,0.5,0.5);
+                glVertex2f(175,220);
+                glVertex2f(175,235);
+                glVertex2f(225,235);
+                glVertex2f(225,220);            
+                glEnd();
+                setFont(GLUT_BITMAP_HELVETICA_10);
+                glColor3f(0,0,0);
+                drawstring(186.0,225.0,1.0,"Google search");
+                glFlush(); 
+                sleep(2);
+                howsearchworks();
+        }
+        if((x>=35.0 && x<=65.0) && (y>=275.0 && y<=305.0 ))//   Icon 2
+        {       
+                glBegin(GL_POLYGON);
+                glColor3f(1,1,1);
+                glVertex2f(30,300);
+                glVertex2f(30,270);
+                glVertex2f(60,270);
+                glVertex2f(60,300);
+                glEnd();
+                glFlush();
+                sleep(1);
+                display2();                 
+        }
+        if(btn==GLUT_LEFT_BUTTON && state==GLUT_DOWN && x>=175.0 && x<=225.0 && y>=220.0 && y<=235.0)
+                howsearchworks();
+        if((x>=30.0 && x<=60.0) && (y>=190.0 && y<=220.0 ))  // 3 menu
+        {
+                glBegin(GL_POLYGON);
+                glColor3f(0.2f,1.0f,0.5f);
+                glVertex2i(60.0,220.0);
+                glVertex2i(30.0,220.0);
+                glVertex2i(30.0,190.0);
+                glVertex2i(60.0,190.0);
+                glEnd();
+                glFlush();
+                sleep(2);
+                glClear(GL_COLOR_BUFFER_BIT);
+                glutInitDisplayMode(GLUT_DOUBLE|GLUT_RGB);
+                glutInitWindowPosition(0,0);
+                glutInitWindowSize(1366,768);
+                glutCreateWindow("Dynamic Sorting Algorithm Visualiser");
+                        init();
+                initialise();       
+                glutDisplayFunc(display1);
+                glutIdleFunc(display1);
+                glutMainLoop();                   
+                }
+        }
+}    
+void display(void)
+{       
+        glClear(GL_COLOR_BUFFER_BIT);
+        title();
      
-     
-                    }
-                    
-            }
-    }
-     
-     
-    void display(void)
-    {       
-            glClear(GL_COLOR_BUFFER_BIT);
-            title();
-     
-    }
-     
-    int main(int argc,char **argv)
-    {
+}     
+int main(int argc,char **argv)
+{
             glutInit(&argc,argv);
             glutInitDisplayMode(GLUT_SINGLE|GLUT_RGBA);
             glutInitWindowPosition(0,0);
-            glutInitWindowSize(1366,768);
+            glutInitWindowSize(1440,900);
             glutCreateWindow("System User Interface");
             glutDisplayFunc(display);
             glutMouseFunc(myMouse);
@@ -1058,5 +1087,4 @@ void howsearchworks3() //Index
             myInit();
             glutMainLoop();
             return 1;
-    }
-
+}
