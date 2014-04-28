@@ -1,6 +1,5 @@
-	
-
-    #include<stdio.h>
+#include<stdio.h>
+#include<unistd.h>
     #include<stdlib.h>
     #include<GL/glut.h>
     void *currentfont;
@@ -172,29 +171,28 @@
   
  glEnd();
            
-          //  glClear(GL_COLOR_BUFFER_BIT);
-            glBegin(GL_POLYGON);
+          glBegin(GL_POLYGON);
             glColor3f(0.7f,0.2f,0.2f);
-            glVertex2i(30,380);
-            glVertex2i(30,350);
-            glVertex2i(60,350);
-            glVertex2i(60,380);
+            glVertex2f(30,380);
+            glVertex2f(30,350);
+            glVertex2f(60,350);
+            glVertex2f(60,380);
             glEnd();
             glFlush();
             glBegin(GL_POLYGON);
             glColor3f(0.7f,0.2f,0.2f);
-            glVertex2i(30,330);
-            glVertex2i(30,300);
-            glVertex2i(60,300);
-            glVertex2i(60,330);
+            glVertex2f(30,300);
+            glVertex2f(30,270);
+            glVertex2f(60,270);
+            glVertex2f(60,300);            
             glEnd();
             glFlush();
             glBegin(GL_POLYGON);
             glColor3f(0.7f,0.2f,0.2f);
-            glVertex2i(30,280);
-            glVertex2i(30,250);
-            glVertex2i(60,250);
-            glVertex2i(60,280);
+            glVertex2f(30,220);
+            glVertex2f(30,190);
+            glVertex2f(60,190);
+            glVertex2f(60,220);            
             glEnd();
             glFlush();
      
@@ -240,24 +238,143 @@
             glColor3f(1.0,1.0,1.0);
             drawstring(210.0,365.0,1.0,"SUBMITTED   BY");                          
             glColor3f(1.0,1.0,0.0);
-            drawstring(150.0,340.0,1.0," ABHIJITH M                                            1BY11CS001");
+            drawstring(150.0,340.0,1.0," XYZ                                            *********");
             glColor3f(1.0,1.0,0.0);
-            drawstring(150.0,300.0,1.0," N S ANUP BHARADWAJ                         1BY11CS039");
+            drawstring(150.0,300.0,1.0," XYZ                        *********");
             glColor3f(1.0,1.0,1.0);
             drawstring(195.0,240.0,1.0,"UNDER THE GUIDANCE OF");
             glColor3f(1.0,1.0,0.0);
-            drawstring(140.0,200.0,1.0," Mr. Muneshwara M S                                 Ms. Ambika G N ");
+            drawstring(140.0,200.0,1.0," ABC                                 ABC ");
             setFont(GLUT_BITMAP_HELVETICA_12);
             glColor3f(1.0,0.0,1.0);
             drawstring(130.0,180.0,1.0,"                  Assistant Professor                                                   Assistant Professor");
             glColor3f(1.0,0.0,1.0);
             drawstring(130.0,160.0,1.0,"                     Dept. of CSE                                                            Dept. of CSE");
             glColor3f(1.0,0.0,1.0);
-            drawstring(140.0,140.0,1.0,"                    BMSIT                                                                      BMSIT");
+            drawstring(140.0,140.0,1.0,"                    ***IT                                                                      ***IT");
             draw_key_int();
             glFlush();
     }
-     
+void googletext()
+{
+ setFont(GLUT_BITMAP_TIMES_ROMAN_24);
+ glColor3f(0.0,0.0,1.0);
+ drawstring(200.0,300.0,1.0," G ");
+ glColor3f(1.0,0.0,0.0);
+ drawstring(220.0,300.0,1.0," O ");
+ glColor3f(1.0,1.0,0.0);
+ drawstring(240.0,300.0,1.0," O ");
+ glColor3f(0.0,0.0,1.0);
+ drawstring(260.0,300.0,1.0," G ");
+ glColor3f(0.0,1.0,0.0);
+ drawstring(280.0,300.0,1.0," L ");
+ glColor3f(1.0,0.0,0.0);
+ drawstring(300.0,300.0,1.0," E ");
+ glFlush();
+}     
+void zoomgoogle()
+{
+ glClear(GL_COLOR_BUFFER_BIT);
+ glBegin(GL_QUADS);
+ glColor3f(0.75,0.75,0.75);
+ glVertex2i(50,50);
+ glVertex2i(450,50);
+ glVertex2i(450,450);
+ glVertex2i(50,450);
+ glEnd();
+ glFlush();
+}
+void google()
+{
+ glClear(GL_COLOR_BUFFER_BIT);
+ glBegin(GL_QUADS);
+ glColor3f(1,1,1);
+ glVertex2i(360,210);
+ glVertex2i(400,210);
+ glVertex2i(400,250);
+ glVertex2i(360,250);
+ glEnd();
+ glFlush();
+ sleep(1);
+ zoomgoogle();
+ googletext();
+}
+void display2()
+{
+ float i,j;
+ glClear(GL_COLOR_BUFFER_BIT);
+ glEnd();
+ for(i=0;i<200;i=i+0.4) //movement of data packet sidewise
+	 {   glBegin(GL_QUADS);
+	        glColor3f(1,1,1);
+                glVertex2i(360,210);
+                glVertex2i(400,210);
+                glVertex2i(400,250);
+                glVertex2i(360,250);
+	     glBegin(GL_QUADS);
+	      glColor3f(1,0,0);
+	      glVertex2i(50+i,95);
+	      glVertex2i(50+i,195);
+	      glVertex2i(90+i,195);
+	      glVertex2i(90+i,95); //body
+	     glColor3f(1,0.5,0);
+	      glVertex2i(62+i,195);
+	      glVertex2i(78+i,195);
+	      glVertex2i(78+i,210);
+	      glVertex2i(62+i,210); //neck
+	     glColor3f(1,0.5,0);
+	      glVertex2i(50+i,210);
+	      glVertex2i(90+i,210);
+	      glVertex2i(90+i,240);
+	      glVertex2i(50+i,240); //head
+	     glColor3f(1,0.5,0);	      
+	      glVertex2i(75+i,175);
+	      glVertex2i(75+i,185);
+	      glVertex2i(145+i,175);
+	      glVertex2i(143+i,165); //hand
+	     glColor3f(1,0.5,0);
+	      glVertex2i(63+i,95)
+	      ;glVertex2i(78+i,95);
+	      glVertex2i(78+i,35);
+	      glVertex2i(63+i,35); //leg
+	     glColor3f(0.60,0.40,0.70);
+	      glVertex2i(63+i,35);
+	      glVertex2i(88+i,35);
+	      glVertex2i(88+i,20);
+	      glVertex2i(63+i,20); //feet
+	     glEnd();
+             glBegin(GL_TRIANGLES);
+             glColor3f(0.60,0.40,0.70);
+              glVertex2i(88+i,35);
+              glVertex2i(88+i,20);
+              glVertex2i(94+i,20); //toes
+             glColor3f(0,0,0);
+              glVertex2i(75+i,230);
+              glVertex2i(90+i,230);
+              glVertex2i(90+i,235); //eye brows
+             glColor3f(0,0,0);
+              glVertex2i(80+i,223);
+              glVertex2i(90+i,223);
+              glVertex2i(85+i,228); //eyes
+             glEnd();
+   	    glFlush();
+              
+              glColor3f(0,0,0);   // to remove traces create movement of frame in black
+	      glBegin(GL_QUADS);
+	      glVertex2i(50-40+i,95);glVertex2i(50-40+i,195);glVertex2i(90-40+i,195);glVertex2i(90-40+i,95);
+	      glVertex2i(62-17+i,195);glVertex2i(78-17+i,195);glVertex2i(78-17+i,210);glVertex2i(62-17+i,210);
+	      glVertex2i(50-40+i,210);glVertex2i(90-40+i,210);glVertex2i(90-40+i,240);glVertex2i(50-40+i,240); 
+	      glVertex2i(63-15+i,95); glVertex2i(78-15+i,95);glVertex2i(78-15+i,35);glVertex2i(63-15+i,35);
+	      glVertex2i(63-25+i,35);glVertex2i(88-25+i,35);glVertex2i(88-25+i,20);glVertex2i(63-25+i,20);
+	     glEnd();
+             glBegin(GL_TRIANGLES);
+              glVertex2i(88-35+i,35);glVertex2i(88-35+i,20);glVertex2i(94-35+i,20);
+              glEnd();
+              glFlush();
+	}
+	sleep(1);
+	        google();
+}
     void mykeyboard(unsigned char key,int x,int y)
     {  if(key=='y' || key=='Y')
             {      glClear(GL_COLOR_BUFFER_BIT);
@@ -271,76 +388,14 @@
                    text1();  
                
            }
-    }
-     
-    void myMouse(int btn, int state, int x, int y)
-    {       if(btn==GLUT_LEFT_BUTTON && state == GLUT_DOWN )
-            {
-                    x=x/2;
-                    y=(1000-y)/2.1;
-                    if ((x>=180 && x<=305) && (y>=395 && y<=425 ))// 1 menu
-                    {       glClear(GL_COLOR_BUFFER_BIT);
-                    glColor3f(1.0,1.0,1.0);
-                            //mobile_stn(1);
-                            draw_key_int();
-                            glBegin(GL_QUADS);
-                             glColor3f(0.2,.2,0.2);
-                                     glVertex2f(75.0+20,30.0);
-                                     glVertex2f(100.0+20,30.0);
-                                     glVertex2f(100.0+20,90.0);
-                                     glVertex2f(75.0+20,90.0);
-                                    glEnd();
-                                    glBegin(GL_QUADS);
-                             glColor3f(.5,0.1,.4);
-                             glVertex2f(120,90);
-                                     glVertex2f(120,110);
-                                     glVertex2f(115,110);
-                                     glVertex2f(115,90);
-                                    glEnd();
-                                    glBegin(GL_QUADS);
-                             glColor3f(0,01,0);
-                             glVertex2f(100-3,80+4);
-                                     glVertex2f(100-3,60);
-                                     glVertex2f(115+3,60);
-                                     glVertex2f(115+3,80+4);
-                                    glEnd();
-     
-     
-                            glFlush();
-                    }
-                    if((x>=180 && x<=305) && (y>=354 && y<=375 ))//   2 menu
-                    {       glClear(GL_COLOR_BUFFER_BIT);
-                            glColor3f(1.0,1.0,1.0);
-                            //mobile_stn(2);
-                            draw_key_int();
-                    }
-                    if((x>=180 && x<=305) && (y>=311 && y<=333 ))  // 3 menu
-                    {
-                    glClear(GL_COLOR_BUFFER_BIT);
-                    glColor3f(1.0,1.0,1.0);
-                    //help();
-                    //draw_key_int1();
-                    //scanf("%d",&helpf);
-                     //helpf=0;
-                     glClear(GL_COLOR_BUFFER_BIT);
-                     glClearColor(0.0,0.0,0.0,0.0);
-                     //help2();
-                     draw_key_int();
-     
-     
-     
-                    }
-                    if((x>=180 && x<=305) && (y>=269 && y<=293 ))  // 4 menu
-                    {
-                            exit(0);
-                    }
-     
-     
-     
-            }
-    }
-     
-     
+    }     
+     void mymouse(int btn,int state, int x, int y)
+     { 
+      if(btn==GLUT_LEFT_BUTTON && state==GLUT_DOWN && x>=35.0 && x<=65.0 && y>=275.0 && y<=305.0)
+      {
+        display2();       
+      }
+     }
     void display(void)
     {       glClear(GL_COLOR_BUFFER_BIT);
             title();
@@ -354,12 +409,12 @@
             glutInitWindowPosition(0,0);
             glutInitWindowSize(700,700);
             glutCreateWindow("System User Interface");
-            glutDisplayFunc(display);
-            glutMouseFunc(myMouse);
+            glutDisplayFunc(display);       
+            glutMouseFunc(mymouse);
             glutKeyboardFunc(mykeyboard);
+            glEnable(GL_DEPTH_TEST);
             myInit();
             glutMainLoop();
        
     return 1;
     }
-
