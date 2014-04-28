@@ -170,7 +170,7 @@
  glVertex2f(225,175);
   
  glEnd();
-           
+       
           glBegin(GL_POLYGON);
             glColor3f(0.7f,0.2f,0.2f);
             glVertex2f(30,380);
@@ -255,125 +255,126 @@
             draw_key_int();
             glFlush();
     }
+void googlesearchtext()
+{
+ setFont(GLUT_BITMAP_HELVETICA_12);
+ glColor3f(0.0,0.0,0.0);
+ drawstring(155.0,260.0,1.0,"How Does GOOGLE Work ??? ");
+ glFlush();
+}
 void googletext()
 {
  setFont(GLUT_BITMAP_TIMES_ROMAN_24);
  glColor3f(0.0,0.0,1.0);
- drawstring(200.0,300.0,1.0," G ");
+ drawstring(190.0,300.0,1.0," G ");
  glColor3f(1.0,0.0,0.0);
- drawstring(220.0,300.0,1.0," O ");
+ drawstring(210.0,300.0,1.0," o ");
  glColor3f(1.0,1.0,0.0);
- drawstring(240.0,300.0,1.0," O ");
+ drawstring(230.0,300.0,1.0," o ");
  glColor3f(0.0,0.0,1.0);
- drawstring(260.0,300.0,1.0," G ");
+ drawstring(250.0,300.0,1.0," g ");
  glColor3f(0.0,1.0,0.0);
- drawstring(280.0,300.0,1.0," L ");
+ drawstring(270.0,300.0,1.0," l ");
  glColor3f(1.0,0.0,0.0);
- drawstring(300.0,300.0,1.0," E ");
+ drawstring(290.0,300.0,1.0," e ");
+ setFont(GLUT_BITMAP_HELVETICA_10);
+ glColor3f(0,0,0);
+ drawstring(186.0,225.0,1.0,"Google search");
+ drawstring(276.0,225.0,1.0,"I'm feeling Lucky");
  glFlush();
+  sleep(1);
+ googlesearchtext();
+
 }     
 void zoomgoogle()
 {
  glClear(GL_COLOR_BUFFER_BIT);
  glBegin(GL_QUADS);
- glColor3f(0.75,0.75,0.75);
- glVertex2i(50,50);
- glVertex2i(450,50);
- glVertex2i(450,450);
- glVertex2i(50,450);
+ glColor3f(0.85,0.85,0.85);
+ glVertex2f(100,100);
+ glVertex2f(400,100);
+ glVertex2f(400,400);
+ glVertex2f(100,400);
+ glEnd();
+ glBegin(GL_LINE_LOOP);
+ glColor3f(0,0,1);
+ glVertex2f(150,253);
+ glVertex2f(150,273);
+ glVertex2f(340,273);
+ glVertex2f(340,253 );
+ glEnd();
+ glBegin(GL_QUADS);
+ glColor3f(0.70,0.70,0.70);
+ glVertex2f(175,220);
+ glVertex2f(175,235);
+ glVertex2f(225,235);
+ glVertex2f(225,220);
+ glEnd();
+ glBegin(GL_QUADS);
+ glColor3f(0.70,0.70,0.70);
+ glVertex2f(265,220);
+ glVertex2f(265,235);
+ glVertex2f(315,235);
+ glVertex2f(315,220);
  glEnd();
  glFlush();
+ googletext();
 }
 void google()
 {
  glClear(GL_COLOR_BUFFER_BIT);
  glBegin(GL_QUADS);
  glColor3f(1,1,1);
- glVertex2i(360,210);
- glVertex2i(400,210);
- glVertex2i(400,250);
- glVertex2i(360,250);
+ glVertex2f(360,210);
+ glVertex2f(400,210);
+ glVertex2f(400,250);
+ glVertex2f(360,250);
  glEnd();
  glFlush();
  sleep(1);
  zoomgoogle();
- googletext();
 }
 void display2()
 {
  float i,j;
  glClear(GL_COLOR_BUFFER_BIT);
- glEnd();
- for(i=0;i<200;i=i+0.4) //movement of data packet sidewise
-	 {   glBegin(GL_QUADS);
-	        glColor3f(1,1,1);
-                glVertex2i(360,210);
-                glVertex2i(400,210);
-                glVertex2i(400,250);
-                glVertex2i(360,250);
-	     glBegin(GL_QUADS);
-	      glColor3f(1,0,0);
-	      glVertex2i(50+i,95);
-	      glVertex2i(50+i,195);
-	      glVertex2i(90+i,195);
-	      glVertex2i(90+i,95); //body
-	     glColor3f(1,0.5,0);
-	      glVertex2i(62+i,195);
-	      glVertex2i(78+i,195);
-	      glVertex2i(78+i,210);
-	      glVertex2i(62+i,210); //neck
-	     glColor3f(1,0.5,0);
-	      glVertex2i(50+i,210);
-	      glVertex2i(90+i,210);
-	      glVertex2i(90+i,240);
-	      glVertex2i(50+i,240); //head
-	     glColor3f(1,0.5,0);	      
-	      glVertex2i(75+i,175);
-	      glVertex2i(75+i,185);
-	      glVertex2i(145+i,175);
-	      glVertex2i(143+i,165); //hand
-	     glColor3f(1,0.5,0);
-	      glVertex2i(63+i,95)
-	      ;glVertex2i(78+i,95);
-	      glVertex2i(78+i,35);
-	      glVertex2i(63+i,35); //leg
-	     glColor3f(0.60,0.40,0.70);
-	      glVertex2i(63+i,35);
-	      glVertex2i(88+i,35);
-	      glVertex2i(88+i,20);
-	      glVertex2i(63+i,20); //feet
-	     glEnd();
-             glBegin(GL_TRIANGLES);
-             glColor3f(0.60,0.40,0.70);
-              glVertex2i(88+i,35);
-              glVertex2i(88+i,20);
-              glVertex2i(94+i,20); //toes
-             glColor3f(0,0,0);
-              glVertex2i(75+i,230);
-              glVertex2i(90+i,230);
-              glVertex2i(90+i,235); //eye brows
-             glColor3f(0,0,0);
-              glVertex2i(80+i,223);
-              glVertex2i(90+i,223);
-              glVertex2i(85+i,228); //eyes
-             glEnd();
-   	    glFlush();
+ for(i=0;i<200;i=i+1) 
+ {  
+        glBegin(GL_QUADS);
+        glColor3f(1,1,1);
+                glVertex2i(360,210);glVertex2i(400,210);glVertex2i(400,250);glVertex2i(360,250);
+        glColor3f(1,0,0);
+                glVertex2i(50+i,95);glVertex2i(50+i,195);glVertex2i(90+i,195);glVertex2i(90+i,95); //body
+        glColor3f(1,0.5,0);
+                glVertex2i(62+i,195);glVertex2i(78+i,195);glVertex2i(78+i,210);glVertex2i(62+i,210); //neck        
+                glVertex2i(50+i,210);glVertex2i(90+i,210);glVertex2i(90+i,240);glVertex2i(50+i,240); //head        	      
+                glVertex2i(75+i,175);glVertex2i(75+i,185);glVertex2i(145+i,175);glVertex2i(143+i,165); //hand       
+                glVertex2i(63+i,95);glVertex2i(78+i,95);glVertex2i(78+i,35);glVertex2i(63+i,35); //leg       
+                glVertex2i(63+i,35);glVertex2i(88+i,35);glVertex2i(88+i,20);glVertex2i(63+i,20); //feet
+        glEnd();
+        glBegin(GL_TRIANGLES);
+        glColor3f(0.60,0.40,0.70);
+                glVertex2i(88+i,35);glVertex2i(88+i,20);glVertex2i(94+i,20); //toes
+        glColor3f(0,0,0);
+                glVertex2i(75+i,230);glVertex2i(90+i,230);glVertex2i(90+i,235); //eye brows        
+                glVertex2i(80+i,223);glVertex2i(90+i,223);glVertex2i(85+i,228); //eyes
+        glEnd();
+        glFlush();
               
-              glColor3f(0,0,0);   // to remove traces create movement of frame in black
-	      glBegin(GL_QUADS);
-	      glVertex2i(50-40+i,95);glVertex2i(50-40+i,195);glVertex2i(90-40+i,195);glVertex2i(90-40+i,95);
-	      glVertex2i(62-17+i,195);glVertex2i(78-17+i,195);glVertex2i(78-17+i,210);glVertex2i(62-17+i,210);
-	      glVertex2i(50-40+i,210);glVertex2i(90-40+i,210);glVertex2i(90-40+i,240);glVertex2i(50-40+i,240); 
-	      glVertex2i(63-15+i,95); glVertex2i(78-15+i,95);glVertex2i(78-15+i,35);glVertex2i(63-15+i,35);
-	      glVertex2i(63-25+i,35);glVertex2i(88-25+i,35);glVertex2i(88-25+i,20);glVertex2i(63-25+i,20);
-	     glEnd();
-             glBegin(GL_TRIANGLES);
-              glVertex2i(88-35+i,35);glVertex2i(88-35+i,20);glVertex2i(94-35+i,20);
-              glEnd();
-              glFlush();
+      glBegin(GL_QUADS);
+      glColor3f(0,0,0);   // to remove traces create movement of frame in black
+	        glVertex2i(50-40+i,95);glVertex2i(50-40+i,195);glVertex2i(90-40+i,195);glVertex2i(90-40+i,95);
+	        glVertex2i(62-17+i,195);glVertex2i(78-17+i,195);glVertex2i(78-17+i,210);glVertex2i(62-17+i,210);
+	        glVertex2i(50-40+i,210);glVertex2i(90-40+i,210);glVertex2i(90-40+i,240);glVertex2i(50-40+i,240); 
+	        glVertex2i(63-15+i,95); glVertex2i(78-15+i,95);glVertex2i(78-15+i,35);glVertex2i(63-15+i,35);
+	        glVertex2i(63-25+i,35);glVertex2i(88-25+i,35);glVertex2i(88-25+i,20);glVertex2i(63-25+i,20);
+      glEnd();
+      glBegin(GL_TRIANGLES);
+                glVertex2i(88-35+i,35);glVertex2i(88-35+i,20);glVertex2i(94-35+i,20);
+        glEnd();
+        glFlush();
 	}
-	sleep(1);
-	        google();
+	google();
 }
     void mykeyboard(unsigned char key,int x,int y)
     {  if(key=='y' || key=='Y')
@@ -391,8 +392,28 @@ void display2()
     }     
      void mymouse(int btn,int state, int x, int y)
      { 
-      if(btn==GLUT_LEFT_BUTTON && state==GLUT_DOWN && x>=35.0 && x<=65.0 && y>=275.0 && y<=305.0)
-      {
+      x=x/2;
+      y=(1000-y)/2.1;
+      if(btn==GLUT_LEFT_BUTTON && state==GLUT_DOWN && x>=30.0 && x<=60.0 && y>=270.0 && y<=300.0)
+      { 
+         glBegin(GL_POLYGON);
+         glColor3f(1,1,1);
+         glVertex2f(30,300);
+         glVertex2f(30,270);
+         glVertex2f(60,270);
+         glVertex2f(60,300);            
+         glEnd();
+         glFlush(); 
+         sleep(1);  
+        display2();       
+      }
+      else if(btn==GLUT_LEFT_BUTTON && state==GLUT_DOWN && x>=30.0 && x<=60.0 && y>=380.0 && y<=350.0)
+      { 
+        
+        display2();       
+      }
+      else if(btn==GLUT_LEFT_BUTTON && state==GLUT_DOWN && x>=30.0 && x<=60.0 && y>=220.0 && y<=190.0)
+      {     
         display2();       
       }
      }
@@ -407,7 +428,7 @@ void display2()
             glutInit(&argc,argv);
             glutInitDisplayMode(GLUT_SINGLE|GLUT_RGBA);
             glutInitWindowPosition(0,0);
-            glutInitWindowSize(700,700);
+            glutInitWindowSize(1448,900);
             glutCreateWindow("System User Interface");
             glutDisplayFunc(display);       
             glutMouseFunc(mymouse);
