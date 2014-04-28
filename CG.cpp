@@ -960,7 +960,7 @@ void howsearchworks3() //Index
                     y=(768-y)/1.536;
                     if ((x>=30.0 && x<=60.0) && (y>=350.0 && y<=380.0 ))// Icon 1
                     {                                   
-                            glBegin(GL_POLYGON);
+                            /*glBegin(GL_POLYGON);
                             glColor3f(0.2f,1.0f,0.5f);
                             glVertex2i(60.0,380.0);
                             glVertex2i(30.0,380.0);
@@ -980,7 +980,7 @@ void howsearchworks3() //Index
                             initialise();       
                             glutDisplayFunc(display1);
                             glutIdleFunc(display1);
-                            glutMainLoop();
+                            glutMainLoop();*/
                             
                     }
                     if((x>=35.0 && x<=65.0) && (y>=275.0 && y<=305.0 ))//   Icon 2
@@ -1005,20 +1005,29 @@ void howsearchworks3() //Index
                       howsearchworks();
                      }
                      
-                    if((x>=30.0 && x<=60.0) && (y>=195.0 && y<=225.0 ))  // 3 menu
+                    if((x>=30.0 && x<=60.0) && (y>=190.0 && y<=220.0 ))  // 3 menu
                     {
-                            /*glBegin(GL_POLYGON);
+                           glBegin(GL_POLYGON);
                             glColor3f(0.2f,1.0f,0.5f);
-                            glVertex2i(60.0,380.0);
-                            glVertex2i(30.0,380.0);
-                            glVertex2i(30.0,350.0);
-                            glVertex2i(60.0,350.0);
+                            glVertex2i(60.0,220.0);
+                            glVertex2i(30.0,220.0);
+                            glVertex2i(30.0,190.0);
+                            glVertex2i(60.0,190.0);
                             glEnd();
                             glFlush();
-                            sleep(2);*/
+                            sleep(2);
                             glClear(GL_COLOR_BUFFER_BIT);
                             
-                           // display2();
+                            
+                            glutInitDisplayMode(GLUT_DOUBLE|GLUT_RGB);
+                            glutInitWindowPosition(0,0);
+                            glutInitWindowSize(1366,768);
+                            glutCreateWindow("Dynamic Sorting Algorithm Visualiser");
+                            init();
+                            initialise();       
+                            glutDisplayFunc(display1);
+                            glutIdleFunc(display1);
+                            glutMainLoop();
                    
      
      
