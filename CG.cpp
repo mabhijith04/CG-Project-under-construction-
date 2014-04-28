@@ -1,8 +1,8 @@
 #include<stdio.h>
 #include<unistd.h>
-    #include<stdlib.h>
-    #include<GL/glut.h>
-    void *currentfont;
+#include<stdlib.h>
+#include<GL/glut.h>
+void *currentfont;
      
     void setFont(void *font)
     { currentfont=font;
@@ -329,7 +329,7 @@ void google()
  glVertex2f(400,210);
  glVertex2f(400,250);
  glVertex2f(360,250);
- glEnd();
+ glEnd();  
  glFlush();
  sleep(1);
  zoomgoogle();
@@ -376,19 +376,265 @@ void display2()
 	}
 	google();
 }
+void howsearchworks()
+{
+ glClear(GL_COLOR_BUFFER_BIT);
+ setFont(GLUT_BITMAP_TIMES_ROMAN_24);
+ glColor3f(1,1,1);
+ drawstring(190,300,1.0,"HOW SEARCH WORKS");
+ setFont(GLUT_BITMAP_HELVETICA_18);
+ glColor3f(1,1,1);
+ drawstring(195,270,1.0,"From Algorithms to Answers.");
+ glFlush();
+  setFont(GLUT_BITMAP_HELVETICA_12);
+ glColor3f(0.60,0.40,0.70);
+ drawstring(300,150,1.0,"Press 1 to Continue.");
+ glFlush();
+}
+
+void howsearchworks1()
+{
+ glClear(GL_COLOR_BUFFER_BIT);
+ glColor3f(0.65,0.85,0.85);
+ glBegin(GL_QUADS);
+ glVertex2f(0,500);
+ glVertex2f(250,500);
+ glVertex2f(250,250);
+ glVertex2f(0,250);
+ glEnd();
+ glFlush();
+ 
+ setFont(GLUT_BITMAP_HELVETICA_12);
+ glColor3f(0,0,0);
+ drawstring(45,420,1.0,"SEARCH STARTS WITH THE WEB. IT'S MADE UP OF OVER");
+ 
+ setFont(GLUT_BITMAP_TIMES_ROMAN_24);
+ glColor3f(1,0,0);
+ drawstring(100,380,1.0,"60");
+ 
+ setFont(GLUT_BITMAP_TIMES_ROMAN_24);
+ glColor3f(1,0,0);
+ drawstring(85,360,1.0,"TRILLION");
+
+ setFont(GLUT_BITMAP_HELVETICA_18);
+ glColor3f(1,1,0);
+ drawstring(80,330,1.0,"Individual Pages");
+ 
+ setFont(GLUT_BITMAP_9_BY_15);
+ glColor3f(1,0,0);
+ drawstring(65,320,1.0,"And its constantly growing.");
+
+ setFont(GLUT_BITMAP_HELVETICA_12);
+ glColor3f(0.60,0.40,0.70);
+ drawstring(200,300,1.0,"Press 2 to Continue.");
+ glFlush();
+}
+
+void howsearchworks2()
+{
+ glClear(GL_COLOR_BUFFER_BIT);
+ glColor3f(0.65,0.65,0.65);
+ glBegin(GL_QUADS);
+ glVertex2f(0,500);
+ glVertex2f(250,500);
+ glVertex2f(250,250);
+ glVertex2f(0,250);
+ glEnd();
+ glFlush();
+ 
+ setFont(GLUT_BITMAP_HELVETICA_12);
+ glColor3f(0,0,0);
+ drawstring(45,420,1.0,"SEARCH STARTS WITH THE WEB. IT'S MADE UP OF OVER");
+ 
+ setFont(GLUT_BITMAP_TIMES_ROMAN_24);
+ glColor3f(1,1,1);
+ drawstring(100,380,1.0,"60");
+ 
+ setFont(GLUT_BITMAP_TIMES_ROMAN_24);
+ glColor3f(1,1,1);
+ drawstring(85,360,1.0,"TRILLION");
+
+ setFont(GLUT_BITMAP_HELVETICA_18);
+ glColor3f(1,1,1);
+ drawstring(80,330,1.0,"Individual Pages");
+ 
+ setFont(GLUT_BITMAP_9_BY_15);
+ glColor3f(1,1,1);
+ drawstring(65,320,1.0,"And its constantly growing.");
+
+ setFont(GLUT_BITMAP_HELVETICA_12);
+ glColor3f(0,0,0);
+ drawstring(200,300,1.0,"Press 2 to Continue.");
+ glFlush();
+  
+ glColor3f(0.65,0.85,0.85);
+ glBegin(GL_QUADS);
+ glVertex2f(250,500);
+ glVertex2f(500,500);
+ glVertex2f(500,250);
+ glVertex2f(250,250);
+ glEnd();
+ 
+ glColor3f(0,0,0);
+  setFont(GLUT_BITMAP_HELVETICA_18);
+  drawstring(341,455,1.0,"Google Navigates the Web by");
+ 
+  setFont(GLUT_BITMAP_TIMES_ROMAN_24);
+  glColor3f(1,0,0);
+  drawstring(340,410,1.0,"C");
+  drawstring(340,395,1.0,"R");
+  drawstring(340,380,1.0,"A");
+  drawstring(340,365,1.0,"W");
+  drawstring(340,350,1.0,"L");
+  drawstring(340,335,1.0,"I");
+  drawstring(340,320,1.0,"N");
+  drawstring(340,305,1.0,"G");
+  
+ setFont(GLUT_BITMAP_9_BY_15);
+ glColor3f(0,0,0);
+ drawstring(400,390,1.0,"That means,");
+ 
+ glColor3f(0,0,0);
+ setFont(GLUT_BITMAP_9_BY_15);
+ drawstring(400,380,1.0,"It follows links from");
+ 
+ glColor3f(0,0,0);
+ setFont(GLUT_BITMAP_9_BY_15);
+ drawstring(400,370,1.0,"page to page");
+ 
+ glColor3f(0,0,1);
+ setFont(GLUT_BITMAP_9_BY_15);
+ drawstring(400,350,1.0,"site owners choose");
+ 
+ glColor3f(0,0,1);
+ setFont(GLUT_BITMAP_9_BY_15);
+ drawstring(400,340,1.0,"whether their sites");
+ 
+ glColor3f(0,0,1);
+ setFont(GLUT_BITMAP_9_BY_15);
+ drawstring(400,330,1.0,"are crawled");
+ 
+ setFont(GLUT_BITMAP_HELVETICA_12);
+ glColor3f(0.60,0.40,0.70);
+ drawstring(420,290,1.0,"Press 3 to Continue.");
+ glFlush();
+}
+
+void howsearchworks3()
+{
+ glColor3f(0.65,0.65,0.65);
+ glBegin(GL_QUADS);
+ glVertex2f(250,500);
+ glVertex2f(500,500);
+ glVertex2f(500,250);
+ glVertex2f(250,250);
+ glEnd(); 
+ glColor3f(0,0,0);
+  setFont(GLUT_BITMAP_HELVETICA_18);
+  drawstring(341,455,1.0,"Google Navigates the Web by"); 
+  setFont(GLUT_BITMAP_TIMES_ROMAN_24);
+  glColor3f(1,1,1);
+  drawstring(340,410,1.0,"C");
+  glColor3f(1,1,1);
+  drawstring(340,395,1.0,"R");
+  glColor3f(1,1,1);
+  drawstring(340,380,1.0,"A");
+  glColor3f(1,1,1);
+  drawstring(340,365,1.0,"W");
+  glColor3f(1,1,1);
+  drawstring(340,350,1.0,"L");
+  glColor3f(1,1,1);
+  drawstring(340,335,1.0,"I");
+  glColor3f(1,1,1);
+  drawstring(340,320,1.0,"N");
+  glColor3f(1,1,1);
+  drawstring(340,305,1.0,"G");  
+ setFont(GLUT_BITMAP_9_BY_15);
+ glColor3f(1,1,1);
+ drawstring(400,390,1.0,"That means,"); 
+ glColor3f(1,1,1);
+ setFont(GLUT_BITMAP_9_BY_15);
+ drawstring(400,380,1.0,"It follows links from"); 
+ glColor3f(1,1,1);
+ setFont(GLUT_BITMAP_9_BY_15);
+ drawstring(400,370,1.0,"page to page"); 
+ glColor3f(0,0,0);
+ setFont(GLUT_BITMAP_9_BY_15);
+ drawstring(400,350,1.0,"site owners choose"); 
+ glColor3f(0,0,0);
+ setFont(GLUT_BITMAP_9_BY_15);
+ drawstring(400,340,1.0,"whether their sites");
+ glColor3f(0,0,0);
+ setFont(GLUT_BITMAP_9_BY_15);
+ drawstring(400,330,1.0,"are crawled"); 
+ setFont(GLUT_BITMAP_HELVETICA_12);
+ glColor3f(0.60,0.40,0.70);
+ drawstring(420,290,1.0,"Press 3 to Continue.");
+
+ glColor3f(0.45,0.45,0.85);
+ glBegin(GL_QUADS);
+ glVertex2f(250,250);
+ glVertex2f(500,250);
+ glVertex2f(500,0);
+ glVertex2f(250,0);
+ glEnd(); 
+ 
+ setFont(GLUT_BITMAP_HELVETICA_18);
+ glColor3f(0,0,0);
+ drawstring(320,215,1.0,"And it keeps track of it all in . . .");
+ 
+  setFont(GLUT_BITMAP_TIMES_ROMAN_24);
+  glColor3f(1,0,0);
+  drawstring(295,150,1.0,"THE");
+  
+  setFont(GLUT_BITMAP_TIMES_ROMAN_24);
+  glColor3f(0,1,0);
+  drawstring(320,150,1.0,"I");
+  glColor3f(0,1,0);
+  drawstring(330,135,1.0,"N");
+  glColor3f(0,1,0);
+  drawstring(340,120,1.0,"D");
+  glColor3f(0,1,0);
+  drawstring(350,105,1.0,"E");
+  glColor3f(0,1,0);
+  drawstring(360,90,1.0,"X");
+  
+ setFont(GLUT_BITMAP_9_BY_15);
+ glColor3f(0,0,0);
+ drawstring(400,150,1.0,"The Index is over"); 
+ glColor3f(0,0,0);
+ drawstring(400,130,1.0,"100 MILLION Gigabytes"); 
+ glFlush();
+ 
+ 
+}
     void mykeyboard(unsigned char key,int x,int y)
     {  if(key=='y' || key=='Y')
-            {      glClear(GL_COLOR_BUFFER_BIT);
-                   draw();
-                   text();
-            }
-        else if(key=='N' || key=='n')
+       {
+             glClear(GL_COLOR_BUFFER_BIT);
+             draw();
+             text();
+       }
+       if(key=='N' || key=='n')
                     exit(0);
-       else if(key=='P' || key=='p')
-           {       glClear(GL_COLOR_BUFFER_BIT);
-                   text1();  
-               
-           }
+       if(key=='P' || key=='p')
+       {
+             glClear(GL_COLOR_BUFFER_BIT);
+             text1();              
+       }
+       if(key=='1')
+       {
+                   glClear(GL_COLOR_BUFFER_BIT);
+                   howsearchworks1();                 
+       }    
+       if(key=='2')
+                   howsearchworks2();                 
+
+       if(key=='3')
+                   howsearchworks3();                 
+           
+       if(key=='b' || key=='B')
+                   howsearchworks();
     }     
      void mymouse(int btn,int state, int x, int y)
      { 
@@ -405,8 +651,14 @@ void display2()
          glEnd();
          glFlush(); 
          sleep(1);  
-        display2();       
+         display2();       
       }
+      if(btn==GLUT_LEFT_BUTTON && state==GLUT_DOWN && x>=225.0 && x<=275.0 && y>=240.0 && y<=255.0)
+       { 
+       glEnd();
+       glFlush();
+       howsearchworks();
+       }
       else if(btn==GLUT_LEFT_BUTTON && state==GLUT_DOWN && x>=30.0 && x<=60.0 && y>=380.0 && y<=350.0)
       { 
         
