@@ -635,7 +635,7 @@ void desktop(void)
         glEnd();
          
         glBegin(GL_TRIANGLES);
-        glColor3f(1,0,0);
+        glColor3f(1,1,1);
         glVertex2f(250,400);
         glVertex2f(250,350);
         glVertex2f(225,325);
@@ -662,7 +662,7 @@ void desktop(void)
         glEnd();
 
         glBegin(GL_QUADS);
-        glColor3f(1,0,0);
+        glColor3f(1,1,1);
          
         glVertex2f(425.0/2,575.0/2);
         glVertex2f(250,300);
@@ -731,7 +731,7 @@ void draw() // TO DRAW POLYGON FOR LOADING
             glVertex2i(280,275);
             glVertex2i(200,275);
             glVertex2i(200,280);
-            glVertex2i(280,280);
+            glVertex2i(280,280);   
             glEnd();
 
             glBegin(GL_POLYGON);  
@@ -783,13 +783,37 @@ void title()                                                                    
 }  
 
 void conversation()
-{
+{       
          float i,j;
-         for(i=0;i<100;i=i+10) 
+         glClear(GL_COLOR_BUFFER_BIT);//outer box
+         
+         glBegin(GL_LINES);
+         glColor3f(0,0,0);
+         glVertex2f(0,50);
+         glVertex2f(470,50);
+        
+         glVertex2f(470,50);
+         glVertex2f(470,500);
+         
+         glVertex2f(470,50);
+         glVertex2f(500,0);
+         glEnd();
+         glFlush();      
+         
+         glBegin(GL_QUADS);
+         glColor3f(1,1,1);
+         glVertex2f(475,350);
+         glVertex2f(495,300);
+         glVertex2f(495,350);
+         glVertex2f(475,400);
+         glEnd();
+         glFlush();
+         
+         for(i=0;i<100;i=i+1) 
          {  
-                        glClear(GL_COLOR_BUFFER_BIT);//outer box
-                        glBegin(GL_QUADS);
+                        
                         //MAN 1
+                        glBegin(GL_QUADS);
                         glColor3f(0.45,0.45,0.45);         
                         glVertex2i(50+50+i,95);
                         glVertex2i(50+50+i,195);
@@ -855,9 +879,79 @@ void conversation()
                         glVertex2i(90+50+i,223);
                         glVertex2i(85+50+i,228); //eyes
                         glEnd();
+                        glFlush();//finish
+                        
+                        
+                        
+                        glBegin(GL_QUADS);
+                        glColor3f(0.1,0.2,0.4);         
+                        glVertex2i(60+i,95);
+                        glVertex2i(60+i,195);
+                        glVertex2i(100+i,195);
+                        glVertex2i(100+i,95); //body
+                        
+                        glColor3f(0.1,0.2,0.4);
+                        glVertex2i(97+i,195);
+                        glVertex2i(113+i,195);
+                        glVertex2i(113+i,210);
+                        glVertex2i(97+i,210); //neck 
+                               
+                        glVertex2i(60+i,210);
+                        glVertex2i(100+i,210);
+                        glVertex2i(100+i,240);
+                        glVertex2i(60+i,240); //head  
+                              	      
+                        glVertex2i(85+i,175);
+                        glVertex2i(85+i,115);
+                        glVertex2i(95+i,115);
+                        glVertex2i(95+i,175); //hand 
+                        
+                        glVertex2i(85+i,115);
+                        glVertex2i(87+i,115);
+                        glVertex2i(87+i,107);
+                        glVertex2i(85+i,107);
+                        
+                        glVertex2i(88+i,115);
+                        glVertex2i(90+i,115);
+                        glVertex2i(90+i,106);
+                        glVertex2i(88+i,106);
+                        
+                        glVertex2i(91+i,115);
+                        glVertex2i(93+i,115);
+                        glVertex2i(93+i,105);
+                        glVertex2i(91+i,105);
+
+                        glVertex2i(94+i,115);
+                        glVertex2i(95+i,115);
+                        glVertex2i(95+i,106);
+                        glVertex2i(94+i,106);                        
+                        //fingers
+                        
+                        glVertex2i(98+i,95);
+                        glVertex2i(113+i,95);
+                        glVertex2i(113+i,35);
+                        glVertex2i(98+i,35); //leg 
+                         
+                        glColor3f(0.1,0.2,0.4);     
+                        glVertex2i(88+i,35);
+                        glVertex2i(113+i,35);
+                        glVertex2i(113+i,20);
+                        glVertex2i(88+i,20); //feet
+                        glEnd();
+                        
+                        glBegin(GL_TRIANGLES);
+                        glColor3f(0,0,0);
+                        glVertex2i(135+i,230);
+                        glVertex2i(135+i,230);
+                        glVertex2i(135+i,235); //eye brows
+                                
+                        glVertex2i(135+i,223);
+                        glVertex2i(135+i,223);
+                        glVertex2i(130+i,228); //eyes
+                        glEnd();
                         glFlush();
                         
-                        //MAN 2 
+                //MAN 2 
                         glBegin(GL_QUADS);                      
                         glColor3f(0.95,0.15,0.15);         
                         glVertex2i(50+50+250,95);
@@ -1285,14 +1379,14 @@ void conversation()
                         glFlush(); 
                         setFont(GLUT_BITMAP_HELVETICA_18);
                         glColor3f(0.1,0.2,0.4);
-                        drawstring(255,300,1,"please Press the button");  
+                        drawstring(245,300,1,"please Press the button");  
                         glColor3f(0.1,0.2,0.4);
-                        drawstring(255,288,1,"B to goto the desktop");  
+                        drawstring(245,288,1,"B to goto the desktop");  
                         glColor3f(0.1,0.2,0.4);
-                        drawstring(255,276,1,"and click the second Icon"); 
+                        drawstring(245,276,1,"and click the second Icon"); 
                         glColor3f(0.1,0.2,0.4);
-                        drawstring(255,264,1,"named as Google");                     
-                        glFlush();                            
+                        drawstring(245,264,1,"named as Google");                     
+                        glFlush();                        
 }
 	    
 void mykeyboard(unsigned char key,int x,int y)
@@ -1326,7 +1420,11 @@ void mykeyboard(unsigned char key,int x,int y)
        if(key=='3')
                    howsearchworks3();           
        if(key=='b' || key=='B')
+       {
+                  glClearColor(0,0,0,0.0);
+                  glColor3f(0.0f,0.0f,0.0f);
                    desktop();
+       }
             
 }
      
@@ -1349,7 +1447,6 @@ void myMouse(int btn, int state, int x, int y)
                   glVertex2i(60.0,350.0);
                   glEnd();
                   glFlush();
-                  //setcolor();
                   glClearColor(0.1,0.2,0.4,0.0);
                   glColor3f(0.0f,0.0f,0.0f);
                   sleep(2);
