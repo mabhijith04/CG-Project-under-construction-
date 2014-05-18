@@ -20,15 +20,17 @@
             }
     }
     // Google Search Code
-void googlesearchtext() // text in the search space
-{
+    
+    void googlesearchtext() // text in the search space
+    {
         setFont(GLUT_BITMAP_HELVETICA_12);
         glColor3f(0.0,0.0,0.0);
          drawstring(155.0,260.0,1.0,"How Does GOOGLE Work ??? ");
         glFlush();
-}
-void googletext() //to display google
-{
+    }
+
+    void googletext() //to display google
+    {
         setFont(GLUT_BITMAP_TIMES_ROMAN_24);
         glColor3f(0.0,0.0,1.0);
         drawstring(190.0,300.0,1.0," G ");
@@ -57,9 +59,10 @@ void googletext() //to display google
         sleep(1);
         googlesearchtext();
                
-}
-void zoomgoogle() //google Zoom
-{
+    }
+
+     void zoomgoogle() //google Zoom
+     {
          glClear(GL_COLOR_BUFFER_BIT);
          glBegin(GL_QUADS);
          glColor3f(0.85,0.85,0.85);
@@ -94,14 +97,16 @@ void zoomgoogle() //google Zoom
          glEnd();
          glFlush();
          googletext();
-}
-void google()
-{
+    }
+
+   void google()
+   {
         sleep(1);
         zoomgoogle();
-}
-void display2()
-{
+    }
+
+   void display2()
+   {
          float i,j;
          glClear(GL_COLOR_BUFFER_BIT);//outer box
          glColor3f(0.45,0.45,0.45);
@@ -162,6 +167,99 @@ void display2()
          glVertex2f(371,190);
          glEnd();
          glFlush();
+         
+         glColor3f(1,0,0);
+         glBegin(GL_LINE_LOOP);
+         glVertex2f(100,340);
+         glVertex2f(100,400);
+         glVertex2f(140,400);
+         glVertex2f(140,340);
+         glEnd();
+         glFlush();
+         setFont(GLUT_BITMAP_HELVETICA_18);
+         glColor3f(0.60,0.40,0.70);
+         drawstring(115,390,1.0,"12");
+         glFlush();
+          glColor3f(0.60,0.40,0.70);
+         drawstring(135,365,1.0,"3");
+         glFlush();
+          glColor3f(0.60,0.40,0.70);
+         drawstring(118,345,1.0,"6");
+         glFlush();
+          glColor3f(0.60,0.40,0.70);
+         drawstring(102,365,1.0,"9");
+         glFlush();
+         glBegin(GL_LINE_LOOP);
+         glColor3f(0,1,0);
+         glVertex2f(119,365);
+         glVertex2f(119,387);
+         glEnd();
+         glFlush();
+         glBegin(GL_LINE_LOOP);
+         glColor3f(0,1,0);
+         glVertex2f(119,365);
+         glVertex2f(130,365);
+         glEnd();
+         glFlush();
+         glBegin(GL_LINE_LOOP);
+         glColor3f(1,0,0);
+         glVertex2f(0,50);
+         glVertex2f(0,450);
+         glVertex2f(480,450);
+         glVertex2f(480,50);
+         glEnd();
+         glFlush();
+         /*glBegin(GL_LINE_LOOP);
+         glColor3f(1,0,0);
+         glVertex2f(20,50);
+         glVertex2f(0,0);
+         glEnd();
+         glFlush();
+         glBegin(GL_LINE_LOOP);
+         glColor3f(1,0,0);
+         glVertex2f(20,450);
+         glVertex2f(0,500);
+         glEnd();
+         glFlush();*/
+         glBegin(GL_LINE_LOOP);
+         glColor3f(1,0,0);
+         glVertex2f(480,450);
+         glVertex2f(500,500);
+         glEnd();
+         glFlush();
+         glBegin(GL_LINE_LOOP);
+         glColor3f(1,0,0);
+         glVertex2f(480,50);
+         glVertex2f(500,0);
+         glEnd();
+         glFlush();
+         /*glBegin(GL_QUADS);
+         glColor3f(0.196078,0.8,0.196078);
+         glVertex2f(0,0);
+         glVertex2f(0,500);
+         glVertex2f(20,450);
+          glVertex2f(20,50);
+         glEnd();
+         glFlush();*/
+          glBegin(GL_QUADS);
+         glColor3f(0.196078,0.8,0.196078);
+         glVertex2f(480,50);
+         glVertex2f(480,450);
+         glVertex2f(500,500);
+          glVertex2f(500,0);
+         glEnd();
+         glFlush();
+         /* glBegin(GL_QUADS);
+         glColor3f(0.196078,0.8,0.196078);
+         glVertex2f(20,50);
+         glVertex2f(20,450);
+         glVertex2f(480,450);
+          glVertex2f(480,450);
+         glEnd();
+         glFlush();*/
+         
+         
+         
          for(i=0;i<230;i=i+1)
          {
                 glBegin(GL_QUADS);
@@ -313,7 +411,7 @@ void howsearchworks1() // 60 Trillion
          drawstring(65,320,1.0,"And its constantly growing.");
 
          setFont(GLUT_BITMAP_HELVETICA_12);
-         glColor3f(0.60,0.40,0.70);
+         glColor3f(0.9,0.20,0.30);
          drawstring(200,300,1.0,"Press 2 to Continue.");
          
          glFlush();
@@ -617,6 +715,11 @@ void howsearchworks3() //Index
          glColor3f(0,0,1);
          drawstring(400,90,1.0,"servicing all requests");
          glFlush();
+         
+         setFont(GLUT_BITMAP_HELVETICA_12);
+         glColor3f(0.3,0.3,0.5);
+         drawstring(420,50,1.0,"Press 4 to Continue."); 
+         glFlush();
 }
     
 void howsearchworks4()
@@ -805,6 +908,7 @@ void howsearchworks4()
          glColor3f(0,0,0);
          drawstring(400,90,1.0,"servicing all requests");
          glFlush();      
+         
          setFont(GLUT_BITMAP_HELVETICA_18);
          glColor3f(0,0,0);
          drawstring(80,205,1.0,"Google Uses Tonnes of");         
@@ -1926,6 +2030,9 @@ void internetmean()
         glVertex2i(267,247);
         glVertex2i(267,223);
         glEnd();
+        setFont(GLUT_BITMAP_HELVETICA_18);
+                    glColor3f(1.0,1.0,1.0);
+                    drawstring(235.0,230.0,1.0,"ROUTER");
         glFlush();  // router
         sleep(1);
         glBegin(GL_LINE_LOOP);
@@ -1976,7 +2083,7 @@ void what() // what is internet
  setFont(GLUT_BITMAP_HELVETICA_18);
             for(i=0;i<250.0;i=i+30)
             {
-            sleep(0.9);
+            sleep(0.5);
             glColor3f(1.0,1.0,1.0);
             drawstring(0+i,300.0,1.0," W H A T");
             glFlush();
@@ -1985,7 +2092,7 @@ void what() // what is internet
             glFlush();
             }
             for(j=500;j>250.0;j=j-50)
-            {sleep(0.9);
+            {sleep(0.5);
             glColor3f(0.4,0.6,0.1);
             drawstring(0+j-50,250.0,1.0," I S");
             glFlush();
@@ -1995,7 +2102,7 @@ void what() // what is internet
             }
             for(k=0;k<=200.0;k=k+50)
             {
-            sleep(0.9);
+            sleep(0.5);
             glColor3f(0.8,0.2,0.6);
             drawstring(250.0,0+k,1.0," I N T E R N E T ?");
             glFlush();
@@ -2015,7 +2122,7 @@ glClear(GL_COLOR_BUFFER_BIT);
 setFont(GLUT_BITMAP_HELVETICA_18);
             for(i=0;i<250.0;i=i+30)
             {
-            sleep(0.9);
+            sleep(0.5);
             glColor3f(1.0,1.0,1.0);
             drawstring(0+i,300.0,1.0,"H O W");
             glFlush();
@@ -2024,7 +2131,7 @@ setFont(GLUT_BITMAP_HELVETICA_18);
             glFlush();
             }
             for(j=500;j>250.0;j=j-50)
-            {sleep(0.9);
+            {sleep(0.5);
             glColor3f(0.4,0.6,0.1);
             drawstring(0+j-50,250.0,1.0," I N T E R N E T");
             glFlush();
@@ -2033,7 +2140,7 @@ setFont(GLUT_BITMAP_HELVETICA_18);
             glFlush();
             }
             for(k=0;k<=200.0;k=k+50)
-            {sleep(0.9);
+            {sleep(0.5);
             glColor3f(0.8,0.2,0.6);
             drawstring(270.0,0+k,1.0," W O R K S ?");
             glFlush();
@@ -2071,28 +2178,12 @@ void internettext()
     {       
             glClearColor(0.0,0.0,0.0,1.0);
             glColor3f(0.0,0.0,0.0);
-            glPointSize(1.0);
+            glPointSize(4.0);
             glLineWidth(2.0);
             gluOrtho2D(0.0,500.0,0.0,500.0);
     }
     
-    void draw_key_int(void)                         // text for keyboard interaction
-    {       
-            glColor3f(0.0,0.0,0.0);
-            glBegin(GL_POLYGON);
-            glVertex2f(0,0);
-            glVertex2f(0,135);
-            glVertex2f(500,135);
-            glVertex2f(500,0);
-            glEnd();
-            glFlush();
-            glColor3f(0.0f,1.0f,1.0f);
-            setFont(GLUT_BITMAP_HELVETICA_18);
-            drawstring(360.0,100.0,1.0,"DO U WISH TO CONTINUE?");
-            glColor3f(0.0f,1.0f,1.0f);
-            drawstring(360.0,80.0,1.0,"PRESS  Y/N");
-            glFlush();
-    }
+   
      
     void text(void)                                                                                 // to draw the text in menu screen
     {
@@ -2213,6 +2304,11 @@ void internettext()
         glVertex2i(30.0,350.0);
         glVertex2i(60.0,350.0);
         glEnd();
+        glFlush();
+        setFont(GLUT_BITMAP_HELVETICA_18);
+                    glColor3f(1.0,1.0,1.0);
+                    drawstring(33.0,335.0,1.0,"CHAT");
+                    glFlush();
         glBegin(GL_POLYGON);
         glColor3f(0.7f,0.2f,0.2f);
         glVertex2i(60.0,300.0);
@@ -2220,6 +2316,35 @@ void internettext()
         glVertex2i(30.0,270.0);
         glVertex2i(60.0,270.0);
         glEnd();
+        glFlush();
+        glBegin(GL_POLYGON);
+        glColor3f(1,0,0);
+        glVertex2i(30.0,300.0);
+        glVertex2i(60.0,300.0);
+        glVertex2i(45.0,285.0);
+        glEnd();
+        glFlush();
+        glBegin(GL_POLYGON);
+        glColor3f(0,1,0);
+        glVertex2i(60.0,300.0);
+        glVertex2i(60.0,270.0);
+        glVertex2i(45.0,285.0);
+        glEnd();
+        glFlush();
+        glBegin(GL_POLYGON);
+        glColor3f(0,0,1);
+        glVertex2i(30.0,270.0);
+        glVertex2i(60.0,270.0);
+        glVertex2i(45.0,285.0);
+        glEnd();
+        glFlush();
+        glBegin(GL_POLYGON);
+        glColor3f(1,1,0);
+        glVertex2i(30.0,270.0);
+        glVertex2i(30.0,300.0);
+        glVertex2i(45.0,285.0);
+        glEnd();
+        glFlush();
         glBegin(GL_POLYGON);
         glColor3f(0.7f,0.2f,0.2f);
         glVertex2i(60.0,220.0);
@@ -2236,6 +2361,10 @@ void internettext()
         glVertex2i(500.0,0.0);
         glEnd();
         glFlush();
+        setFont(GLUT_BITMAP_HELVETICA_18);
+                    glColor3f(1.0,1.0,1.0);
+                    drawstring(30.0,255.0,1.0,"GOOGLE");
+                    glFlush();
         glBegin(GL_POLYGON);
         glColor3f(0.5,0.5,0.5);
         glVertex2i(0.0,0.0);
@@ -2244,8 +2373,12 @@ void internettext()
         glVertex2i(50.0,0.0);
         glEnd();
         glFlush();
+        setFont(GLUT_BITMAP_HELVETICA_18);
+                    glColor3f(1.0,1.0,1.0);
+                    drawstring(28.0,175.0,1.0,"INTERNET");
+                    glFlush();
         glColor3f(1.0,1.0,1.0);
-            drawstring(10.0,10.0,1.0," START");
+            drawstring(0.0,7.0,1.0," SHUT DOWN");
             glFlush();       
 }     
 void draw() // TO DRAW POLYGON FOR LOADING
@@ -2293,6 +2426,7 @@ void shutdown()
             glFlush();
             glColor3f(1.0,1.0,1.0);
             drawstring(215.0,250.0,1.0," | ");
+            
             glFlush();
              glBegin(GL_POLYGON);  // cancel
             glColor3f(0.2f,0.7f,0.2f);
@@ -2307,29 +2441,84 @@ void shutdown()
             glFlush();
 }    
 void title()                                                                                            // to draw the starting screen
-{       
+{       float i,j;
             glClear(GL_COLOR_BUFFER_BIT);
             setFont(GLUT_BITMAP_HELVETICA_18);
             glColor3f(1.0,1.0,1.0);
-            drawstring(55.0,435.0,1.0,"                                                     \"Graphical Implementation Of System User Interface\"");
+            drawstring(180.0,450.0,1.0,"Computer Graphics and Visualization Mini Project");
+            glColor3f(0.3,0.6,0.3);
+            glBegin(GL_LINE_LOOP);
+            glVertex2i(178.0,448.0);
+            glVertex2i(338.0,448.0);
+            glEnd();
+            glFlush();
+            sleep(1);
             glColor3f(1.0,1.0,1.0);
-            drawstring(210.0,365.0,1.0,"SUBMITTED   BY");                          
-            glColor3f(1.0,1.0,0.0);
-            drawstring(150.0,340.0,1.0," ABHIJITH M                                            1BY11CS001");
-            glColor3f(1.0,1.0,0.0);
-            drawstring(150.0,300.0,1.0," N S ANUP BHARADWAJ                         1BY11CS039");
+            drawstring(120.0,400.0,1.0,"\"GRAPHICAL IMPLEMENTATION Of SYSTEM USER INTERFACE USING OpenGL\"");
+            glFlush();
             glColor3f(1.0,1.0,1.0);
-            drawstring(195.0,240.0,1.0,"UNDER THE GUIDANCE OF");
+            drawstring(220.0,350.0,1.0," Submitted by :");                          
+            
+            for(i=0;i<150;i=i+80)
+            { 
             glColor3f(1.0,1.0,0.0);
-            drawstring(140.0,200.0,1.0," Mr. Muneshwara M S                                 Ms. Ambika G N ");
+            drawstring(0+i,300.0,1.0,"ABHIJITH M");
+            glFlush();
+            glColor3f(0.0,0.0,0.0);
+            drawstring(-80+i,300.0,1.0,"ABHIJITH M");
+            glFlush();
+            glColor3f(1.0,1.0,0.0);
+            drawstring(420.0-i,300.0,1.0," N S ANUP BHARADWAJ");
+            glFlush();
+            glColor3f(0.0,0.0,0.0);
+            drawstring(500.0-i,300.0,1.0," N S ANUP BHARADWAJ");
+            glFlush();
+            sleep(1);
+            }   
+             sleep(1);
+             glColor3f(1.0,1.0,0.0);
+             drawstring(77.0,280.0,1.0,"(1BY11CS001)");
+              glColor3f(1.0,1.0,0.0);
+             drawstring(355.0,280.0,1.0,"(1BY11CS039)");
+             glFlush();
+             glColor3f(1.0,1.0,1.0);
+             drawstring(210.0,230.0,1.0,"Under the Guidance of :");
+             for(j=0;j<200;j=j+80)
+            {
+            glColor3f(1.0,1.0,0.0);
+            drawstring(70.0,0+j,1.0," Mr. Muneshwara M S");
+            glFlush();
+            glColor3f(0.0,0.0,0.0);
+            drawstring(70.0,-80+j,1.0," Mr. Muneshwara M S");
+            glFlush();
+            glColor3f(1.0,1.0,0.0);
+            drawstring(360.0,0+j,1.0," Ms. Ambika G N");
+            glFlush();
+            glColor3f(0.0,0.0,0.0);
+            drawstring(360.0,-80+j,1.0," Ms. Ambika G N");
+            glFlush();
+            sleep(1);
+            }
+            
             setFont(GLUT_BITMAP_HELVETICA_12);
             glColor3f(1.0,0.0,1.0);
-            drawstring(130.0,180.0,1.0,"                  Assistant Professor                                                   Assistant Professor");
+            drawstring(83.0,140.0,1.0,"Assistant Professor");
+            glFlush();
             glColor3f(1.0,0.0,1.0);
-            drawstring(130.0,160.0,1.0,"                     Dept. of CSE                                                            Dept. of CSE");
+            drawstring(367.0,140.0,1.0,"Assistant Professor");
+            glFlush();
+            setFont(GLUT_BITMAP_HELVETICA_18);
             glColor3f(1.0,0.0,1.0);
-            drawstring(140.0,140.0,1.0,"                    BMSIT                                                                      BMSIT");
-            draw_key_int();
+            drawstring(190.0,120.0,1.0," Computer Science and Engineering");
+            glFlush();
+            glColor3f(1.0,0.0,1.0);
+            drawstring(230.0,100.0,1.0," B M S I T ");
+            glFlush();
+            //draw_key_int();
+            
+            setFont(GLUT_BITMAP_TIMES_ROMAN_24);
+            glColor3f(0.0,1.0,1.0);
+            drawstring(400.0,50.0,1.0,"Press Y to Boot");
             glFlush();
 }    
 void mykeyboard(unsigned char key,int x,int y)
@@ -2420,7 +2609,7 @@ void myMouse(int btn, int state, int x, int y)
                   glFlush();
                   glClearColor(0.1,0.2,0.4,0.0);
                   glColor3f(0.0f,0.0f,0.0f);
-                  sleep(2);
+                  sleep(1);
                   conversation();                           
                     }
                     if((x>=30.0 && x<=60.0) && (y>=270.0 && y<=300.0 ))//   2 menu
@@ -2453,7 +2642,15 @@ void myMouse(int btn, int state, int x, int y)
                    }                
                     if((x>=30.0 && x<=60.0) && (y>=190.0 && y<=220.0 ))  // icon 3
                     {
-                     glClear(GL_COLOR_BUFFER_BIT);
+                      glBegin(GL_POLYGON);
+                        glColor3f(1,1,1);
+                        glVertex2f(30,190);
+                        glVertex2f(30,220);
+                        glVertex2f(60,220);
+                        glVertex2f(60,190);
+                        glEnd();
+                        glFlush();
+                        sleep(1);
                      internettext();
                     }
                     if((x>=0.0 && x<=50.0) && (y>=0.0 && y<=20.0 ))  // shut down
