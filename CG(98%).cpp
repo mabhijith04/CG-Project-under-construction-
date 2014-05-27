@@ -209,18 +209,6 @@
          glVertex2f(480,50);
          glEnd();
          glFlush();
-         /*glBegin(GL_LINE_LOOP);
-         glColor3f(1,0,0);
-         glVertex2f(20,50);
-         glVertex2f(0,0);
-         glEnd();
-         glFlush();
-         glBegin(GL_LINE_LOOP);
-         glColor3f(1,0,0);
-         glVertex2f(20,450);
-         glVertex2f(0,500);
-         glEnd();
-         glFlush();*/
          glBegin(GL_LINE_LOOP);
          glColor3f(1,0,0);
          glVertex2f(480,450);
@@ -233,33 +221,14 @@
          glVertex2f(500,0);
          glEnd();
          glFlush();
-         /*glBegin(GL_QUADS);
-         glColor3f(0.196078,0.8,0.196078);
-         glVertex2f(0,0);
-         glVertex2f(0,500);
-         glVertex2f(20,450);
-          glVertex2f(20,50);
-         glEnd();
-         glFlush();*/
-          glBegin(GL_QUADS);
+         glBegin(GL_QUADS);
          glColor3f(0.196078,0.8,0.196078);
          glVertex2f(480,50);
          glVertex2f(480,450);
          glVertex2f(500,500);
-          glVertex2f(500,0);
+         glVertex2f(500,0);
          glEnd();
-         glFlush();
-         /* glBegin(GL_QUADS);
-         glColor3f(0.196078,0.8,0.196078);
-         glVertex2f(20,50);
-         glVertex2f(20,450);
-         glVertex2f(480,450);
-          glVertex2f(480,450);
-         glEnd();
-         glFlush();*/
-         
-         
-         
+         glFlush();        
          for(i=0;i<230;i=i+1)
          {
                 glBegin(GL_QUADS);
@@ -346,8 +315,7 @@ glVertex2i(63-25+i,35);
 glVertex2i(88-25+i,35);
 glVertex2i(88-25+i,20);
 glVertex2i(63-25+i,20);	
-
-                                      
+                                     
               glEnd();
               
               glBegin(GL_TRIANGLES);
@@ -2192,8 +2160,6 @@ void internettext()
             drawstring(200.0,355.0,1.0,"           GRAPHICAL SYSTEM");                             
             glColor3f(1.0,1.0,1.0);
             drawstring(235.0,250.0,1.0,"    Loading...");
-            glColor3f(1.0,1.0,1.0);
-            drawstring(360.0,80.0,1.0,"            Press P to proceed");
             glFlush();
     }
      
@@ -2405,6 +2371,7 @@ void draw() // TO DRAW POLYGON FOR LOADING
             glFlush();
             }
       }
+      desktop();
 }    
 void shutdown()
 {
@@ -2531,11 +2498,6 @@ void mykeyboard(unsigned char key,int x,int y)
             }
         if(key=='N' || key=='n')
                     exit(0);
-        if(key=='P' || key=='p')
-           {       
-                   glClear(GL_COLOR_BUFFER_BIT);
-                   desktop();  
-           }
         if(key=='B' || key=='b')
            {       
                    glClear(GL_COLOR_BUFFER_BIT);
@@ -2595,8 +2557,8 @@ void myMouse(int btn, int state, int x, int y)
 {       
      if(btn==GLUT_LEFT_BUTTON && state == GLUT_DOWN )
             {      
-                    x=x/2.732;
-                    y=(768-y)/1.536;
+                    x=x/2.88;
+                    y=(900-y)/1.8;
                     if ((x>=30.0 && x<=60.0) && (y>=350.0 && y<=380.0 ))// icon 1
                     {        
                         glBegin(GL_POLYGON);
@@ -2681,7 +2643,7 @@ int main(int argc,char **argv)
             glutInit(&argc,argv);
             glutInitDisplayMode(GLUT_SINGLE|GLUT_RGBA);
             glutInitWindowPosition(0,0);
-            glutInitWindowSize(1366,768);
+            glutInitWindowSize(1440,900);
             glutCreateWindow("System User Interface");
             glutDisplayFunc(display);
             glutMouseFunc(myMouse);
